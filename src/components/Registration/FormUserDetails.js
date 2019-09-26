@@ -4,14 +4,27 @@ import AppBar from'material-ui/AppBar';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
+
 export class FormUserDetails extends Component {
+     
     continue = e => {
         e.preventDefault();
         this.props.nextStep();
     }
+   
+  
+    
+  
+
+     
+
+
+
     render() {
         const { values,handleChange} = this.props;
-        return (
+        
+        return ( 
+            
             <MuiThemeProvider>
                 <React.Fragment>
                     <AppBar title="Enter User Information"/>
@@ -19,8 +32,10 @@ export class FormUserDetails extends Component {
                       hintText= "Enter Your First Name"
                       floatingLabelText="First Name"
                       onChange={handleChange('firstName')}
-                      defaultValue={values.firstName}
                     />
+            
+                   
+         
                 <br/>
                 <TextField 
                       hintText= "Enter Your Last Name"
@@ -43,16 +58,31 @@ export class FormUserDetails extends Component {
                       defaultValue={values.password}
                     />
                 <br/>
+                
+                <TextField 
+                      hintText= "Enter Your City"
+                      floatingLabelText="City"
+                      onChange={handleChange('city')}
+                      defaultValue={values.city}
+                      
+                    />
+                <br/>
                 <RaisedButton
                     label="Continue"
                     primary={true}
                     style={styles.button}
                     onClick={this.continue}
                 />
+                
                 </React.Fragment>
             </MuiThemeProvider>
-        );
+            
+            
+        
+        
+         ); 
     }
+    
 }
 
 const styles = {
