@@ -18,7 +18,7 @@ export class FormPersonalDetails extends Component {
         return (
             <MuiThemeProvider>
                 <React.Fragment>
-                    <AppBar title="Enter Personal Information"/>
+                    <AppBar title="Enter Personal Details"/>
                     <TextField 
                       hintText= "Enter Your City"
                       floatingLabelText="City"

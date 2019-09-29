@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import FormUserDetails from './FormUserDetails';
 import FormPersonalDetails from './FormPersonalDetails';
 import Confirm from './Confirm';
+import { withRouter, Redirect } from "react-router";
 
 
 export class UserForm extends Component {
@@ -10,8 +11,6 @@ export class UserForm extends Component {
         step: 1,
         firstName: '',
         lastName: '',
-        email: '',
-        password: '',
         city: '',
         gender: '',
         height: '',
@@ -42,9 +41,9 @@ export class UserForm extends Component {
     }
     render() {
         const {step} = this.state;
-        const {firstName, lastName,city, email, password,gender,height,weight,bodyType,
+        const {firstName, lastName,city, gender,height,weight,bodyType,
         fitnessGoal} = this.state;
-        const values = { firstName, lastName, city, email, password, gender, height, weight, bodyType, fitnessGoal}
+        const values = { firstName, lastName, city, gender, height, weight, bodyType, fitnessGoal}
         //Change case 4 to transition to user homescreen
         
         switch (step) {
@@ -73,7 +72,7 @@ export class UserForm extends Component {
                     values={values}
                     />)
             case 4: 
-                return <h1>City Fit Home Screen</h1>
+                return <Redirect to="/" />;
             default:
                 
         }

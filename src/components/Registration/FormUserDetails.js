@@ -29,20 +29,6 @@ export class FormUserDetails extends Component {
                       defaultValue={values.lastName}
                     />
                 <br/>
-                <TextField 
-                      hintText= "Enter Your Email Name"
-                      floatingLabelText="Email"
-                      onChange={handleChange('email')}
-                      defaultValue={values.email}
-                    />
-                <br/>
-                <TextField 
-                      hintText= "Enter Your Password"
-                      floatingLabelText="Password"
-                      onChange={handleChange('password')}
-                      defaultValue={values.password}
-                    />
-                <br/>
                 <RaisedButton
                     label="Continue"
                     primary={true}

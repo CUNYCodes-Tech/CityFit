@@ -15,7 +15,7 @@ export class FormUserDetails extends Component {
         this.props.prevStep();
     }
     render() {
-        const { values: {firstName, lastName,email,password,city, gender,height, weight,bodyType,fitnessGoal}} = this.props;
+        const { values: {firstName, lastName,city, gender,height, weight,bodyType,fitnessGoal}} = this.props;
         return (
             <MuiThemeProvider>
                 <React.Fragment>
@@ -28,14 +28,6 @@ export class FormUserDetails extends Component {
                         <ListItem 
                            primaryText ="Last Name"
                            secondaryText= {lastName}
-                        />
-                        <ListItem 
-                           primaryText ="Email"
-                           secondaryText= {email}
-                        />
-                        <ListItem 
-                           primaryText ="Password"
-                           secondaryText= {password}
                         />
                         <ListItem 
                            primaryText ="City"
