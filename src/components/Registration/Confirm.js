@@ -5,23 +5,38 @@ import {List, ListItem} from 'material-ui/List';
 import RaisedButton from 'material-ui/RaisedButton';
 import fire from '../../base';
 
-export class FormUserDetails extends Component {
-    continue = e => {
-        e.preventDefault();
-        this.addUserProfile();
-        //PROCESS FORM
-        this.props.nextStep();
-    }
-    back = e => {
+export class Comfirm extends Component {
+    submit  = () => {
+        const { values: {firstName, lastName,borough, gender,height, weight,bodyType,fitnessGoal}} = this.props;
+        // e.preventDefault();
+         if(firstName === ''){
+             alert("First Name Cannot Be Empty")
+             this.props.twoStepsBack();
+         }
+         else if(lastName === ''){
+             alert("Last Name Cannot Be Empty")
+             this.props.twoStepsBack();
+         }
+         else if (borough === '' || gender==='' || height === '' || weight === '' || bodyType === '' || fitnessGoal === ''){
+             alert("No Field Can be Left Empty")
+             this.props.prevStep();
+         }
+         else{ 
+            this.addUserProfile();
+            this.props.nextStep();
+         }
+         //PROCESS FORM
+     }
+     back = e => {
         e.preventDefault();
         this.props.prevStep();
     }
     addUserProfile(){
-        const { values: {firstName, lastName,city, gender,height, weight,bodyType,fitnessGoal}} = this.props;
+        const { values: {firstName, lastName,borough, gender,height, weight,bodyType,fitnessGoal}} = this.props;
         var UserInfo = {
             first_name: firstName,
             last_name: lastName,
-            City: city,
+            Borough: borough,
             Gender: gender,
             Height: height,
             Weight: weight,
@@ -33,61 +48,61 @@ export class FormUserDetails extends Component {
         
     }
     render() {
-        const { values: {firstName, lastName,city, gender,height, weight,bodyType,fitnessGoal}} = this.props;
+        const { values: {firstName, lastName,borough, gender,height, weight,bodyType,fitnessGoal}} = this.props;
         return (
             <form>
                 <MuiThemeProvider>
                     <React.Fragment>
-                        <AppBar title="Confrim User Information" />
+                        <AppBar title="Comfrim User Information" />
                         <List>
-                            <ListItem
-                                primaryText="First Name"
-                                secondaryText={firstName}
-                            />
-                            <ListItem
-
-                                primaryText="Last Name"
-                                secondaryText={lastName}
-                            />
-                            <ListItem
-                                primaryText="City"
-                                secondaryText={city}
-                            />
-                            <ListItem
-                                primaryText="Gender"
-                                secondaryText={gender}
-                            />
-                            <ListItem
-                                primaryText="Height"
-                                secondaryText={height}
-                            />
-                            <ListItem
-                                primaryText="Weight"
-                                secondaryText={weight}
-                            />
-                            <ListItem
-                                primaryText="Body Type"
-                                secondaryText={bodyType}
-                            />
-                            <ListItem
-                                primaryText="Fitness Goal"
-                                secondaryText={fitnessGoal}
-                            />
-                        </List>
+                        <ListItem 
+                           primaryText ="First Name"
+                           secondaryText= {firstName}
+                        />
+                        <ListItem 
+                           primaryText ="Last Name"
+                           secondaryText= {lastName}
+                        />
+                        <ListItem 
+                           primaryText ="Borough"
+                           secondaryText= {borough}
+                        />
+                        <ListItem 
+                           primaryText ="Gender"
+                           secondaryText= {gender}
+                        />
+                        <ListItem 
+                           primaryText ="Height"
+                           secondaryText= {height}
+                        />
+                        <ListItem 
+                           primaryText ="Weight"
+                           secondaryText= {weight}
+                        />
+                        <ListItem 
+                           primaryText ="Body Type"
+                           secondaryText= {bodyType}
+                        />
+                        <ListItem 
+                           primaryText ="Fitness Goal"
+                           secondaryText= {fitnessGoal}
+                        />
+                    </List>
+                    
 
 
 
                         <br />
                         <RaisedButton
-                            label="Confirm & Continue"
+                            label="Submit"
                             primary={true}
                             style={styles.button}
-                            onClick={this.continue}
+                            onClick={this.submit.bind(this)}
                         />
                         <RaisedButton
                             label="Back"
                             primary={false}
-                            style={styles.button}
+                            style={styles.button} 
                             onClick={this.back}
                         />
                     </React.Fragment>
@@ -104,4 +119,4 @@ const styles = {
 
 }
 
-export default FormUserDetails
+export default Comfirm

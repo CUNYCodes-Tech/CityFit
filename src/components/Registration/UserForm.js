@@ -11,7 +11,7 @@ export class UserForm extends Component {
         step: 1,
         firstName: '',
         lastName: '',
-        city: '',
+        borough: '',
         gender: '',
         height: '',
         weight: '',
@@ -24,6 +24,12 @@ export class UserForm extends Component {
         const {step} = this.state;
         this.setState({
             step: step +1
+        });
+    }
+    twoStepsBack = () => {
+        const {step} = this.state;
+        this.setState({
+            step: step - 2
         });
     }
 
@@ -41,9 +47,9 @@ export class UserForm extends Component {
     }
     render() {
         const {step} = this.state;
-        const {firstName, lastName,city, gender,height,weight,bodyType,
+        const {firstName, lastName,borough, gender,height,weight,bodyType,
         fitnessGoal} = this.state;
-        const values = { firstName, lastName, city, gender, height, weight, bodyType, fitnessGoal}
+        const values = { firstName, lastName, borough, gender, height, weight, bodyType, fitnessGoal}
         //Change case 4 to transition to user homescreen
         
         switch (step) {
@@ -69,6 +75,7 @@ export class UserForm extends Component {
                     <Confirm
                     nextStep={this.nextStep}
                     prevStep={this.prevStep}
+                    twoStepsBack={this.twoStepsBack}
                     values={values}
                     />)
             case 4: 
@@ -80,4 +87,4 @@ export class UserForm extends Component {
     }
 }
 
-export default UserForm
+export default UserForm 
