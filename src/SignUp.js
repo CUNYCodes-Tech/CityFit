@@ -1,61 +1,68 @@
 import React, { useCallback } from "react";
 import { withRouter } from "react-router";
 import app from "./base";
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { withStyles } from '@material-ui/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-const SignUp = ({ history }) => {
-  const handleSignUp = useCallback(async event => {
-    event.preventDefault();
-    const { email, password } = event.target.elements;
-    try {
-      await app
-        .auth()
-        .createUserWithEmailAndPassword(email.value, password.value);
-      history.push("/userProfile");
-    } catch (error) {
-      alert(error);
-    }
-  }, [history]);
-
-  return (
-    <form onSubmit={handleSignUp}>
-      <MuiThemeProvider>
-        <React.Fragment>
-          <h2>Please Enter An Email and A Password</h2>
-          <TextField
-            name="email"
-            type='email'
-            label='Email'
-          />
-          <br />
-          <TextField
-            name="password"
-            type="password"
-            label='Password'
-          />
-          <br />
-          <Button
-            color='primary'
-            variant='contained'
-            style={styles.button}
-            type="submit"
-          >
-            Sign Up
-          </Button>
-        </React.Fragment>
-      </MuiThemeProvider>
-    </form>
-
-  );
-};
-
 const styles = {
-  button: {
-      margin: 15
-  }
-
+	button: {
+		margin: 15
+	}
 }
 
-export default withRouter(SignUp);
+const SignUp = ({ history }) => {
+	const handleSignUp = useCallback(async event => {
+		event.preventDefault();
+		const { email, password, confirmPassword } = event.target.elements;
+
+		if(password.value === confirmPassword.value && password.value.length > 0) {
+			try {
+				await app
+					.auth()
+					.createUserWithEmailAndPassword(email.value, password.value);
+				history.push("/userform");
+			} catch (error) {
+				alert(error);
+			}
+		} else {
+			alert('Your Passwords Do Not Match')
+		}
+	}, [history]);
+
+  	return (
+		<form onSubmit={handleSignUp}>
+			<React.Fragment>
+				<h2>Please Enter An Email and A Password</h2>
+				<TextField
+					name="email"
+					type='email'
+					label='Email'
+				/>
+				<br />
+				<TextField
+					name="password"
+					type="password"
+					label='Password'
+				/>
+				<br />
+				<TextField
+					name="confirmPassword"
+					type="password"
+					label='Confirm Password'
+				/>
+				<br />
+				<Button
+					color='primary'
+					variant='contained'
+					style={styles.button}
+					type="submit"
+				>
+					Sign Up
+				</Button>
+			</React.Fragment>
+		</form>
+  	);
+};
+
+export default withRouter(withStyles(styles)(SignUp));

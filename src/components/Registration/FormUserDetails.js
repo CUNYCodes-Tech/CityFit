@@ -1,51 +1,50 @@
 import React, { Component } from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from'material-ui/AppBar';
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
-export class FormUserDetails extends Component {
+class FormUserDetails extends Component {
     continue = e => {
         e.preventDefault();
         this.props.nextStep();
     }
+    
     render() {
-        const { values,handleChange} = this.props;
+        const { user, handleChange, classes } = this.props;
+
         return (
-            <MuiThemeProvider>
-                <React.Fragment>
-                    <AppBar title="Enter User Information"/>
-                    <TextField 
-                      hintText= "Enter Your First Name"
-                      floatingLabelText="First Name"
-                      onChange={handleChange('firstName')}
-                      defaultValue={values.firstName}
-                    />
+            <>
+                <Typography 
+                    className={classes.typography} 
+                    variant='h4'
+                >
+                    Personal Information
+                </Typography>
+                <TextField 
+                    label= 'Enter Your First Name'
+                    name='firstName'
+                    onChange={handleChange('firstName')}
+                    value={user.firstName}
+                />
                 <br/>
                 <TextField 
-                      hintText= "Enter Your Last Name"
-                      floatingLabelText="Last Name"
-                      onChange={handleChange('lastName')}
-                      defaultValue={values.lastName}
-                    />
-                <br/>
-                <RaisedButton
-                    label="Continue"
-                    primary={true}
-                    style={styles.button}
-                    onClick={this.continue}
+                    label= 'Enter Your Last Name'
+                    name='lastName'
+                    onChange={handleChange('lastName')}
+                    value={user.lastName}
                 />
-                </React.Fragment>
-            </MuiThemeProvider>
+                <br/>
+                <Button
+                    color='primary'
+                    variant='contained'
+                    className={classes.button}
+                    onClick={this.continue}
+                >
+                    Continue
+                </Button>
+            </>
         );
     }
 }
 
-const styles = {
-    button: {
-        margin: 15
-    }
-
-}
-
-export default FormUserDetails
+export default FormUserDetails;
