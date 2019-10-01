@@ -20,7 +20,8 @@ export default class Profile extends Component {
         let user = this.state.user
         return (
             <div>
-                <img src='https://unsplash.com/photos/Csi89ZJF13c' alt='User Profile Image' />
+                <img src='https://images.unsplash.com/photo-1569839078801-94107e43e884?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80'
+                alt = 'User Profile' width='400' height='300'/>
                 <h3>Name {/* user.firstName + user.lastName */}</h3>
                 <h3>Gender {/* user.gender */}</h3>
                 <h3>Height {/* user.height */}</h3>

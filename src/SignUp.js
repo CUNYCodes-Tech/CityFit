@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { withRouter } from "react-router";
 import app from "./base";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import TextField from 'material-ui/TextField';
+import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 const SignUp = ({ history }) => {
@@ -26,16 +26,14 @@ const SignUp = ({ history }) => {
           <h2>Please Enter An Email and A Password</h2>
           <TextField
             name="email"
-            hintText="Enter Your Email"
-            floatingLabelText="Email"
+            type='email'
+            label='Email'
           />
           <br />
           <TextField
             name="password"
             type="password"
-            hintText="Enter Your Password"
-            floatingLabelText="Password"
-            
+            label='Password'
           />
           <br />
           <Button
