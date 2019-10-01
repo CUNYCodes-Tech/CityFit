@@ -1,11 +1,10 @@
 import React, { useCallback, useContext } from "react";
-import { withRouter, Redirect } from "react-router";
+import { withRouter, Redirect, Link } from "react-router-dom";
 import app from "./base.js";
 import { AuthContext } from "./Auth.js";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from'material-ui/AppBar';
 import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
+import Button from '@material-ui/core/Button';
 
 const Login = ({ history }) => {
   const handleLogin = useCallback(
@@ -34,7 +33,7 @@ const Login = ({ history }) => {
     <form onSubmit={handleLogin}>
       <MuiThemeProvider>
         <React.Fragment>
-          <AppBar title="Enter Login Information" />
+          <h2>Enter Your Login Credentials</h2>
           <TextField
             name="email"
             hintText="Enter Your Email"
@@ -50,13 +49,23 @@ const Login = ({ history }) => {
             
           />
           <br />
-          <RaisedButton
-            label="Login"
-            primary={true}
+          <Button
+            color='primary'
             style={styles.button}
             type="submit"
-          />
+            variant='contained'
+          >
+            Login
+          </Button>
         </React.Fragment>
+        <Button
+          color='primary'
+          style={styles.button}
+          type="submit"
+          variant='contained'
+        >
+          <Link to='/signup' style={{textDecoration: 'none', color: 'white'}}>Sign Up</Link>
+        </Button>
       </MuiThemeProvider>
     </form>
   );

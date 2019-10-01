@@ -5,6 +5,7 @@ import { AuthProvider } from './Auth';
 import './App.css';
 import Home from "./Home";
 import CompReg from "./components/Registration/UserForm";
+import Profile from './components/Profile';
 import Login from "./Login";
 import SignUp from "./SignUp";
 import PrivateRoute from "./PrivateRoute";
@@ -18,7 +19,8 @@ class App extends Component {
         <Router>
           <div className="App">
             <PrivateRoute exact path="/" component={Home} />
-            <PrivateRoute exact path="/userProfile" component={CompReg} />
+            {/* <PrivateRoute exact path="/userProfile" component={CompReg} />  CompReg is a registration component*/} 
+            <PrivateRoute exact path='/profile' component={Profile} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />
           </div>

@@ -2,9 +2,8 @@ import React, { useCallback } from "react";
 import { withRouter } from "react-router";
 import app from "./base";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from'material-ui/AppBar';
 import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
+import Button from '@material-ui/core/Button';
 
 const SignUp = ({ history }) => {
   const handleSignUp = useCallback(async event => {
@@ -24,12 +23,11 @@ const SignUp = ({ history }) => {
     <form onSubmit={handleSignUp}>
       <MuiThemeProvider>
         <React.Fragment>
-          <AppBar title="Enter Your Information" />
+          <h2>Please Enter An Email and A Password</h2>
           <TextField
             name="email"
             hintText="Enter Your Email"
             floatingLabelText="Email"
-            
           />
           <br />
           <TextField
@@ -40,12 +38,14 @@ const SignUp = ({ history }) => {
             
           />
           <br />
-          <RaisedButton
-            label="Sign Up"
-            primary={true}
+          <Button
+            color='primary'
+            variant='contained'
             style={styles.button}
             type="submit"
-          />
+          >
+            Sign Up
+          </Button>
         </React.Fragment>
       </MuiThemeProvider>
     </form>
