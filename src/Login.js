@@ -70,7 +70,7 @@ const Login = ({ history }) => {
 
 const styles = {
   button: {
-      margin: 15
+    margin: 15
   }
 
 }

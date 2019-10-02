@@ -4,7 +4,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/typography';
-import fire from '../../base';
+import firebase from '../../base';
 
 class Confirm extends Component {
     submit = () => {
@@ -40,18 +40,22 @@ class Confirm extends Component {
 
     addUserProfile(){
         const { user: {firstName, lastName, borough, gender, height, weight, bodyType, fitnessGoal}} = this.props;
+        const uid = firebase.auth().currentUser.uid;
+        const email = firebase.auth().currentUser.providerData[0].uid;
+        console.log('email ', email)
         var UserInfo = {
-            first_name: firstName,
-            last_name: lastName,
-            Borough: borough,
-            Gender: gender,
-            Height: height,
-            Weight: weight,
-            BodyType: bodyType,
-            FitnessGoal: fitnessGoal
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            borough: borough,
+            gender: gender,
+            height: height,
+            weight: weight,
+            bodyType: bodyType,
+            fitnessGoal: fitnessGoal
         }
         /* Send the UserProfile to Firebase */
-        fire.database().ref('UserProfile').push( UserInfo ); 
+        firebase.database().ref('UserProfile').child(uid).set( UserInfo ); 
     }
 
     render() {
