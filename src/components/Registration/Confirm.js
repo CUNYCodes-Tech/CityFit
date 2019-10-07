@@ -1,122 +1,106 @@
 import React, { Component } from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from'material-ui/AppBar';
-import {List, ListItem} from 'material-ui/List';
-import RaisedButton from 'material-ui/RaisedButton';
-import fire from '../../base';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/typography';
+import firebase from '../../base';
 
-export class Comfirm extends Component {
-    submit  = () => {
-        const { values: {firstName, lastName,borough, gender,height, weight,bodyType,fitnessGoal}} = this.props;
+class Confirm extends Component {
+    submit = () => {
+        const { user: {firstName, lastName, borough, gender, height, weight, bodyType, fitnessGoal}} = this.props;
         // e.preventDefault();
-         if(firstName === ''){
-             alert("First Name Cannot Be Empty")
-             this.props.twoStepsBack();
-         }
-         else if(lastName === ''){
-             alert("Last Name Cannot Be Empty")
-             this.props.twoStepsBack();
-         }
-         else if (borough === '' || gender==='' || height === '' || weight === '' || bodyType === '' || fitnessGoal === ''){
-             alert("No Field Can be Left Empty")
-             this.props.prevStep();
-         }
-         else{ 
+        if(firstName === ''){
+            alert("First Name Cannot Be Empty")
+            this.props.twoStepsBack();
+        } else if(lastName === ''){
+            alert("Last Name Cannot Be Empty")
+            this.props.twoStepsBack();
+        } else if(
+            borough === '' || 
+            gender ==='' || 
+            height === '' || 
+            weight === '' || 
+            bodyType === '' || 
+            fitnessGoal === ''
+        ) {
+            alert("No Field Can be Left Empty")
+            this.props.prevStep();
+        } else{ 
             this.addUserProfile();
             this.props.nextStep();
-         }
+        }
          //PROCESS FORM
-     }
-     back = e => {
+    }
+
+    back = e => {
         e.preventDefault();
         this.props.prevStep();
     }
+
     addUserProfile(){
-        const { values: {firstName, lastName,borough, gender,height, weight,bodyType,fitnessGoal}} = this.props;
+        const { user: {firstName, lastName, borough, gender, height, weight, bodyType, fitnessGoal}} = this.props;
+        const uid = firebase.auth().currentUser.uid;
+        const email = firebase.auth().currentUser.providerData[0].uid;
+        console.log('email ', email)
         var UserInfo = {
-            first_name: firstName,
-            last_name: lastName,
-            Borough: borough,
-            Gender: gender,
-            Height: height,
-            Weight: weight,
-            BodyType: bodyType,
-            FitnessGoal: fitnessGoal
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            borough: borough,
+            gender: gender,
+            height: height,
+            weight: weight,
+            bodyType: bodyType,
+            fitnessGoal: fitnessGoal
         }
         /* Send the UserProfile to Firebase */
-        fire.database().ref('UserProfile').push( UserInfo );
-        
+        firebase.database().ref('UserProfile').child(uid).set( UserInfo ); 
     }
+
     render() {
-        const { values: {firstName, lastName,borough, gender,height, weight,bodyType,fitnessGoal}} = this.props;
+        const { classes } = this.props;
+        const infoName = ['First Name', 'Last Name', 'Borough', 'Gender', 'Height', 'Weight', 'Body Type', 'Fitness Goal'];
+
         return (
             <form>
-                <MuiThemeProvider>
-                    <React.Fragment>
-                        <AppBar title="Comfrim User Information" />
-                        <List>
-                        <ListItem 
-                           primaryText ="First Name"
-                           secondaryText= {firstName}
-                        />
-                        <ListItem 
-                           primaryText ="Last Name"
-                           secondaryText= {lastName}
-                        />
-                        <ListItem 
-                           primaryText ="Borough"
-                           secondaryText= {borough}
-                        />
-                        <ListItem 
-                           primaryText ="Gender"
-                           secondaryText= {gender}
-                        />
-                        <ListItem 
-                           primaryText ="Height"
-                           secondaryText= {height}
-                        />
-                        <ListItem 
-                           primaryText ="Weight"
-                           secondaryText= {weight}
-                        />
-                        <ListItem 
-                           primaryText ="Body Type"
-                           secondaryText= {bodyType}
-                        />
-                        <ListItem 
-                           primaryText ="Fitness Goal"
-                           secondaryText= {fitnessGoal}
-                        />
+                <React.Fragment>
+                    <Typography variant='h4'>Confirm Your Information</Typography>
+                    <List dense={true}>
+                        {
+                            Object.keys(this.props.user).map((data, i) => {
+                                return (
+                                    <ListItem key={data} className={classes.listItem}>
+                                        <ListItemText
+                                            primary={infoName[i]}
+                                            secondary={this.props.user[data]}
+                                        />
+                                    </ListItem>
+                                )
+                            })
+                        }
                     </List>
-                    
-
-
-
-                        <br />
-                        <RaisedButton
-                            label="Submit"
-                            primary={true}
-                            style={styles.button}
-                            onClick={this.submit.bind(this)}
-                        />
-                        <RaisedButton
-                            label="Back"
-                            primary={false}
-                            style={styles.button} 
-                            onClick={this.back}
-                        />
-                    </React.Fragment>
-                </MuiThemeProvider>
+                    <br />
+                    <Button
+                        variant='contained'
+                        color='secondary'
+                        className={classes.button} 
+                        onClick={this.back}
+                    >
+                        Back
+                    </Button>
+                    <Button
+                        variant='contained'
+                        color='primary'
+                        className={classes.button}                             
+                        onClick={this.submit.bind(this)}
+                    >
+                        Submit
+                    </Button>
+                </React.Fragment>
             </form>
         );
     }
 }
 
-const styles = {
-    button: {
-        margin: 15
-    }
-
-}
-
-export default Comfirm
+export default Confirm;

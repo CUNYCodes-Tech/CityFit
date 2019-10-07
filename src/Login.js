@@ -1,11 +1,10 @@
 import React, { useCallback, useContext } from "react";
-import { withRouter, Redirect } from "react-router";
+import { withRouter, Redirect, Link } from "react-router-dom";
 import app from "./base.js";
 import { AuthContext } from "./Auth.js";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from'material-ui/AppBar';
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 const Login = ({ history }) => {
   const handleLogin = useCallback(
@@ -34,28 +33,35 @@ const Login = ({ history }) => {
     <form onSubmit={handleLogin}>
       <MuiThemeProvider>
         <React.Fragment>
-          <AppBar title="Enter Login Information" />
+          <h2>Enter Your Login Credentials</h2>
           <TextField
             name="email"
-            hintText="Enter Your Email"
-            floatingLabelText="Email"
-            
+            label='Email'
+            type='email'
           />
           <br />
           <TextField
             name="password"
+            label='Password'
             type="password"
-            hintText="Enter Your Password"
-            floatingLabelText="Password"
-            
           />
           <br />
-          <RaisedButton
-            label="Login"
-            primary={true}
+          <Button
+            color='primary'
             style={styles.button}
             type="submit"
-          />
+            variant='contained'
+          >
+            Login
+          </Button>
+          <Button
+            color='primary'
+            style={styles.button}
+            type="submit"
+            variant='contained'
+          >
+            <Link to='/signup' style={{textDecoration: 'none', color: 'white'}}>Sign Up</Link>
+          </Button>
         </React.Fragment>
       </MuiThemeProvider>
     </form>
@@ -64,7 +70,7 @@ const Login = ({ history }) => {
 
 const styles = {
   button: {
-      margin: 15
+    margin: 15
   }
 
 }
