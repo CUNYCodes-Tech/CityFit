@@ -1,8 +1,27 @@
 import React, { Component } from 'react'
+import { withStyles } from '@material-ui/styles';
 import FormUserDetails from './FormUserDetails';
 import FormPersonalDetails from './FormPersonalDetails';
 import Confirm from './Confirm';
+import { Redirect } from "react-router-dom";
 
+const styles = {
+    button: {
+        margin: '15px'
+    },
+    typography: {
+        fontFamily: 'Montserrat, sans-serif'
+    },
+    inputLabel: {
+        marginTop: '15px'
+    },
+    select: {
+        width: '135px'
+    },
+    listItem: {
+        textAlign: 'center'
+    }
+}
 
 export class UserForm extends Component {
     //eventually make height and weight scroll menu's
@@ -10,9 +29,7 @@ export class UserForm extends Component {
         step: 1,
         firstName: '',
         lastName: '',
-        email: '',
-        password: '',
-        city: '',
+        borough: '',
         gender: '',
         height: '',
         weight: '',
@@ -25,6 +42,12 @@ export class UserForm extends Component {
         const {step} = this.state;
         this.setState({
             step: step +1
+        });
+    }
+    twoStepsBack = () => {
+        const {step} = this.state;
+        this.setState({
+            step: step - 2
         });
     }
 
@@ -40,21 +63,24 @@ export class UserForm extends Component {
     handleChange = input => e => {
         this.setState({[input]: e.target.value});
     }
+
     render() {
         const {step} = this.state;
-        const {firstName, lastName,city, email, password,gender,height,weight,bodyType,
+        const {firstName, lastName,borough, gender,height,weight,bodyType,
         fitnessGoal} = this.state;
-        const values = { firstName, lastName, city, email, password, gender, height, weight, bodyType, fitnessGoal}
+        const user = { firstName, lastName, borough, gender, height, weight, bodyType, fitnessGoal }
+        const { classes } = this.props
         //Change case 4 to transition to user homescreen
         
         switch (step) {
             case 1:
                 return (
-                 <FormUserDetails
-                   nextStep={this.nextStep}
-                   handleChange={this.handleChange}
-                   values={values}
-                />   
+                    <FormUserDetails
+                    nextStep={this.nextStep}
+                    handleChange={this.handleChange}
+                    user={user}
+                    classes={classes}
+                    />   
                 )
             case 2:
                 return (
@@ -62,18 +88,21 @@ export class UserForm extends Component {
                        nextStep={this.nextStep}
                        prevStep={this.prevStep}
                        handleChange={this.handleChange}
-                       values={values}
-                       />
+                       user={user}
+                       classes={classes}
+                    />
                 )
             case 3: 
                 return (
                     <Confirm
-                    nextStep={this.nextStep}
-                    prevStep={this.prevStep}
-                    values={values}
+                        nextStep={this.nextStep}
+                        prevStep={this.prevStep}
+                        twoStepsBack={this.twoStepsBack}
+                        user={user}
+                        classes={classes}
                     />)
             case 4: 
-                return <h1>City Fit Home Screen</h1>
+                return <Redirect to="/" />;
             default:
                 
         }
@@ -81,4 +110,4 @@ export class UserForm extends Component {
     }
 }
 
-export default UserForm
+export default withStyles(styles)(UserForm);
