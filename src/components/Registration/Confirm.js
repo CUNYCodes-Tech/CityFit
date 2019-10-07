@@ -1,106 +1,94 @@
 import React, { Component } from 'react';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/typography';
-import firebase from '../../base';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import AppBar from'material-ui/AppBar';
+import {List, ListItem} from 'material-ui/List';
+import RaisedButton from 'material-ui/RaisedButton';
 
-class Confirm extends Component {
-    submit = () => {
-        const { user: {firstName, lastName, borough, gender, height, weight, bodyType, fitnessGoal}} = this.props;
-        // e.preventDefault();
-        if(firstName === ''){
-            alert("First Name Cannot Be Empty")
-            this.props.twoStepsBack();
-        } else if(lastName === ''){
-            alert("Last Name Cannot Be Empty")
-            this.props.twoStepsBack();
-        } else if(
-            borough === '' || 
-            gender ==='' || 
-            height === '' || 
-            weight === '' || 
-            bodyType === '' || 
-            fitnessGoal === ''
-        ) {
-            alert("No Field Can be Left Empty")
-            this.props.prevStep();
-        } else{ 
-            this.addUserProfile();
-            this.props.nextStep();
-        }
-         //PROCESS FORM
+export class FormUserDetails extends Component {
+    continue = e => {
+        e.preventDefault();
+        //PROCESS FORM
+        this.props.nextStep();
     }
-
     back = e => {
         e.preventDefault();
         this.props.prevStep();
     }
-
-    addUserProfile(){
-        const { user: {firstName, lastName, borough, gender, height, weight, bodyType, fitnessGoal}} = this.props;
-        const uid = firebase.auth().currentUser.uid;
-        const email = firebase.auth().currentUser.providerData[0].uid;
-        console.log('email ', email)
-        var UserInfo = {
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            borough: borough,
-            gender: gender,
-            height: height,
-            weight: weight,
-            bodyType: bodyType,
-            fitnessGoal: fitnessGoal
-        }
-        /* Send the UserProfile to Firebase */
-        firebase.database().ref('UserProfile').child(uid).set( UserInfo ); 
-    }
-
     render() {
-        const { classes } = this.props;
-        const infoName = ['First Name', 'Last Name', 'Borough', 'Gender', 'Height', 'Weight', 'Body Type', 'Fitness Goal'];
-
+        const { values: {firstName, lastName,email,password,city, gender,height, weight,bodyType,fitnessGoal}} = this.props;
         return (
-            <form>
+            <MuiThemeProvider>
                 <React.Fragment>
-                    <Typography variant='h4'>Confirm Your Information</Typography>
-                    <List dense={true}>
-                        {
-                            Object.keys(this.props.user).map((data, i) => {
-                                return (
-                                    <ListItem key={data} className={classes.listItem}>
-                                        <ListItemText
-                                            primary={infoName[i]}
-                                            secondary={this.props.user[data]}
-                                        />
-                                    </ListItem>
-                                )
-                            })
-                        }
+                    <AppBar title="Confrim User Information"/>
+                    <List>
+                        <ListItem 
+                           primaryText ="First Name"
+                           secondaryText= {firstName}
+                        />
+                        <ListItem 
+                           primaryText ="Last Name"
+                           secondaryText= {lastName}
+                        />
+                        <ListItem 
+                           primaryText ="Email"
+                           secondaryText= {email}
+                        />
+                        <ListItem 
+                           primaryText ="Password"
+                           secondaryText= {password}
+                        />
+                        <ListItem 
+                           primaryText ="City"
+                           secondaryText= {city}
+                        />
+                        <ListItem 
+                           primaryText ="Gender"
+                           secondaryText= {gender}
+                        />
+                        <ListItem 
+                           primaryText ="Height"
+                           secondaryText= {height}
+                        />
+                        <ListItem 
+                           primaryText ="Weight"
+                           secondaryText= {weight}
+                        />
+                        <ListItem 
+                           primaryText ="Body Type"
+                           secondaryText= {bodyType}
+                        />
+                        <ListItem 
+                           primaryText ="Fitness Goal"
+                           secondaryText= {fitnessGoal}
+                        />
                     </List>
-                    <br />
-                    <Button
-                        variant='contained'
-                        color='secondary'
-                        className={classes.button} 
-                        onClick={this.back}
-                    >
-                        Back
-                    </Button>
-                    <Button
-                        variant='contained'
-                        color='primary'
-                        className={classes.button}                             
-                        onClick={this.submit.bind(this)}
-                    >
-                        Submit
-                    </Button>
+                    
+                    
+                
+                <br/>
+                <RaisedButton
+                    label="Confirm & Continue"
+                    primary={true}
+                    style={styles.button}
+                    onClick={this.continue}
+                />
+                <RaisedButton
+                    label="Back"
+                    primary={false}
+                    style={styles.button}
+                    onClick={this.back}
+                />
                 </React.Fragment>
-            </form>
+            </MuiThemeProvider>
         );
     }
 }
 
-export default Confirm;
+const styles = {
+    button: {
+        margin: 15
+    }
+
+}
+
+export default FormUserDetails
