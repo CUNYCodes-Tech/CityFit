@@ -20,6 +20,7 @@ class FormUserDetails extends Component {
                 >
                     Personal Information
                 </Typography>
+
                 <TextField 
                     label= 'Enter Your First Name'
                     name='firstName'
@@ -34,6 +35,7 @@ class FormUserDetails extends Component {
                     value={user.lastName}
                 />
                 <br/>
+
                 <Button
                     color='primary'
                     variant='contained'
@@ -45,6 +47,7 @@ class FormUserDetails extends Component {
             </>
         );
     }
+    
 }
 
 export default FormUserDetails;

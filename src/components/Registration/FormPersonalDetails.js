@@ -5,7 +5,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 
-
 export default class FormPersonalDetails extends Component {
     continue = e => {
         e.preventDefault();
