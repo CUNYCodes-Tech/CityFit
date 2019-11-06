@@ -4,9 +4,15 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.4.3",
+    "bootstrap": "^4.3.1",
+    "dotenv": "^8.1.0",
+    "firebase": "^7.0.0",
     "material-ui": "^0.20.2",
     "react": "^16.9.0",
+    "react-bootstrap": "^1.0.0-beta.14",
     "react-dom": "^16.9.0",
+    "react-router": "^5.1.1",
+    "react-router-dom": "^5.1.1",
     "react-scripts": "3.1.2"
   },
   "scripts": {
@@ -29,5 +35,22 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "<<<<<<< HEAD\r This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.11.2",
+    "css-loader": "^3.2.0",
+    "style-loader": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CUNYCodes-Tech/CityFit.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CUNYCodes-Tech/CityFit/issues"
+  },
+  "homepage": "https://github.com/CUNYCodes-Tech/CityFit#readme"
 }
