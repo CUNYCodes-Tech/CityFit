@@ -18,11 +18,13 @@ class CatalogNavigator extends Component{
   }
 
  	 render(){
+		  console.log(this.props)
 		switch (this.props.match.params.category) {
 			case 'arms':
 				return (
 					<Arms
 						backToCatalog = {this.backToCatalog}
+						prevProp = {this.props}
 					/>
 				)
 			case 'legs': 
@@ -30,7 +32,7 @@ class CatalogNavigator extends Component{
 					<Legs
 						backToCatalog = {this.backToCatalog}				
 					/>)
-			case 'chests': 
+			case 'chest': 
 				return (
 					<Chest
 						backToCatalog = {this.backToCatalog}

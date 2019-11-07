@@ -23,6 +23,7 @@ export default class Routes extends Component {
                     <Route exact path='/signup' component={SignUp} />
                     <Route exact path='/catalog' component={Catalog} />
                     <Route path='/catalog/:category' component={Workouts} />
+                    {/* <Route path='/catalog/:category/:workout' component={Workouts} /> */}
                     <Route exact path='/gym_location' component={GymLocation} />
                 </div>
             </Router>

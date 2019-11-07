@@ -1,11 +1,11 @@
-#cataCont {
+.centerFlex {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-content: center;
 }
 
-.cata {
+.margin15 {
   margin: 15px;
 }
 
