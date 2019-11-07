@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 //import Button from '@material-ui/core/Button';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { ListItemText } from '@material-ui/core';
 import invertedrows from '../exercise_imgs/Back/invertedrows.jpg';
 import latpull from '../exercise_imgs/Back/latpull.gif';
@@ -21,7 +20,7 @@ export class Back extends Component {
       }
     render() {
         return (
-            <MuiThemeProvider>
+            <>
                 <h1>Back Excercises</h1>
 
                 <ListItemText primary = "Barbell DeadLift"/>
@@ -53,7 +52,7 @@ export class Back extends Component {
              Return to Catalog
             </button>
                 
-            </MuiThemeProvider>
+            </>
         )
     }
 }

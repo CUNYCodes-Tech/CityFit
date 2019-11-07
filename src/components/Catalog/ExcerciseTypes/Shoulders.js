@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 //import Button from '@material-ui/core/Button';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { ListItemText } from '@material-ui/core';
 import arnold from '../exercise_imgs/Shoulder/arnold.jpg';
 import fraise from '../exercise_imgs/Shoulder/frontraise.jpg';
@@ -19,7 +18,7 @@ export class Shoulders extends Component {
       }
     render() {
         return (
-            <MuiThemeProvider>
+            <>
             <h1>Shoulder Excercises</h1>
             <ListItemText primary = "Upright Row"/>
             <img src ={uprightrow} alt="shoulder"></img>
@@ -52,7 +51,7 @@ export class Shoulders extends Component {
          Return to Catalog
         </button>
             
-        </MuiThemeProvider>
+        </>
         )
     }
 }

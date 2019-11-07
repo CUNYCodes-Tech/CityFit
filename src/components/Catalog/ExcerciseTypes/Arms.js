@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../catalog.css'
 //import Button from '@material-ui/core/Button';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { ListItemText } from '@material-ui/core';
 import bicepcurls from '../exercise_imgs/Arms/bicepcurls.jpg';
 import pullup from '../exercise_imgs/Arms/pullup.jpg';
@@ -11,7 +10,7 @@ import tricepextenstion from '../exercise_imgs/Arms/tricepextenstion.jpg';
 import tricepkickback from '../exercise_imgs/Arms/tricepkickback.jpg';
 import tricepdip from '../exercise_imgs/Arms/tricepdip.jpg';
 
-export class Arms extends Component {
+export default class Arms extends Component {
     backToCatalog = e =>{
         e.preventDefault();
         this.props.backToCatalog();
@@ -19,7 +18,7 @@ export class Arms extends Component {
 
     render() {
         return (
-            <MuiThemeProvider>
+            <>
                 <h1>Arm Excercises</h1>
 
                 <ListItemText primary = "Bicep Curls"/>
@@ -52,11 +51,9 @@ export class Arms extends Component {
              Return to Catalog
             </button>
                 
-            </MuiThemeProvider>
+            </>
             
 
         )
     }
 }
-
-export default Arms

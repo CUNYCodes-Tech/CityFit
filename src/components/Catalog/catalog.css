@@ -1,3 +1,14 @@
+#cataCont {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.cata {
+  margin: 15px;
+}
+
 .button {
     background-color:#73079e; 
     border: 0;
