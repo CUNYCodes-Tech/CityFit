@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-//import Button from '@material-ui/core/Button';
-import { ListItemText } from '@material-ui/core';
+import WorkTemp from './workout_template';
 import arnold from '../exercise_imgs/Shoulder/arnold.jpg';
 import fraise from '../exercise_imgs/Shoulder/frontraise.jpg';
 import inclinerow from '../exercise_imgs/Shoulder/inclinerow.jpg';
@@ -11,49 +10,46 @@ import uprightrow from '../exercise_imgs/Shoulder/uprightrow.jpg';
 
 
 
-export class Shoulders extends Component {
-    backToCatalog = e =>{
-        e.preventDefault();
-        this.props.backToCatalog();
-      }
+export default class Shoulders extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            workouts: {
+                upright_row: {
+                    img: uprightrow,
+                    desc: ''
+                },
+                front_raise: {
+                    img: fraise,
+                    desc: ''
+                },
+                barbell_push_press: {
+                    img: pushpress,
+                    desc: ''
+                },
+                dumbbell_incline_row: {
+                    img: inclinerow,
+                    desc: ''
+                },
+                seated_overhead_dumbbell_press: {
+                    img: opress,
+                    desc: ''
+                },
+                arnold_press: {
+                    img: arnold,
+                    desc: ''
+                },
+                dumbbell_lateral_raise: {
+                    img: lraise,
+                    desc: ''
+                },
+            }
+        }
+    }
+    
     render() {
         return (
-            <>
-            <h1>Shoulder Excercises</h1>
-            <ListItemText primary = "Upright Row"/>
-            <img src ={uprightrow} alt="shoulder"></img>
-
-            <ListItemText primary = "Front Raise"/>
-            <img src ={fraise} alt="shoulder"></img>
-            
-            <ListItemText primary = "Barbell Push Press"/>
-            <img src ={pushpress} alt="shoulder"></img>
-
-            <ListItemText primary = "Dumbbell Incline Row"/>
-            <img src ={inclinerow} alt="shoulder"></img>
-
-            <ListItemText primary = "Seated Overhead Dumbbell Press"/>
-            <img src ={opress} alt="shoulder"></img>
-
-            <ListItemText primary = "Arnold Press"/>
-            <img src ={arnold} alt="shoulder"></img>
-
-            <ListItemText primary = "Dumbbell Lateral Raise"/>
-            <img src ={lraise} alt="shoulder"></img>
-
-            <br/>
-
-            <button
-        variant ='contained'
-        color = 'primary'
-        onClick = {this.backToCatalog}
-        > 
-         Return to Catalog
-        </button>
-            
-        </>
+            <WorkTemp prevProp={this.props.prevProp} workouts={this.state.workouts} workoutGroup='Shoulder Exercise' />  
         )
     }
 }
-
-export default Shoulders
