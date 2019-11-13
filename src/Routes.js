@@ -10,6 +10,7 @@ import PrivateRoute from './PrivateRoute';
 import Catalog from './components/Catalog/CatalogHome';
 import Workouts from './components/Catalog/CatalogNavigator';
 import GymLocation from './components/GymLocation/GymNavigator';
+import Arms from './components/Catalog/ExcerciseTypes/Arms';
 
 export default class Routes extends Component {
     render() {
@@ -23,7 +24,7 @@ export default class Routes extends Component {
                     <Route exact path='/signup' component={SignUp} />
                     <Route exact path='/catalog' component={Catalog} />
                     <Route path='/catalog/:category' component={Workouts} />
-                    {/* <Route path='/catalog/:category/:workout' component={Workouts} /> */}
+                    <Route path='/catalog/:category/:workout' component={Arms} /> 
                     <Route exact path='/gym_location' component={GymLocation} />
                 </div>
             </Router>

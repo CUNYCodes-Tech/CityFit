@@ -115,7 +115,7 @@ export default class Arms extends Component {
                                         </Card.Text>
                                         <Button variant="primary" id={name} type="button" onClick={this.showModal}>Show More</Button>
                                         {/* <Button variant="primary" onClick={() => this.props.prevProp.history.push(path)}>Show More</Button> */}
-                                    </Card.Body>
+                                   </Card.Body>
                                 </Card>
                             )
                         })
@@ -144,3 +144,4 @@ export default class Arms extends Component {
         )
     }
 }
+
