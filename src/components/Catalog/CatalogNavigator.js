@@ -6,48 +6,35 @@ import Back from './ExcerciseTypes/Back';
 import Shoulders from './ExcerciseTypes/Shoulders';
 
 class CatalogNavigator extends Component{
-  // constructor(props) {
-  //   super(props);
-  // }
-  state = {
-    muscleGroup: 1
-  }
-
-  backToCatalog = () => {
-    this.props.history.goBack();
-  }
-
- 	 render(){
-		  console.log(this.props)
+ 	render(){
 		switch (this.props.match.params.category) {
 			case 'arms':
 				return (
 					<Arms
-						backToCatalog = {this.backToCatalog}
 						prevProp = {this.props}
 					/>
 				)
 			case 'legs': 
 				return (
 					<Legs
-						backToCatalog = {this.backToCatalog}				
+						prevProp = {this.props}				
 					/>)
 			case 'chest': 
 				return (
 					<Chest
-						backToCatalog = {this.backToCatalog}
+						prevProp = {this.props}
 					/>
 				)
 			case 'back': 
 				return(
 					<Back
-						backToCatalog = {this.backToCatalog}
+						prevProp = {this.props}
 					/>
 				)
 			case 'shoulders': 
 				return(
 					<Shoulders
-						backToCatalog = {this.backToCatalog}
+						prevProp = {this.props}
 					/>
 				)      
 			default:

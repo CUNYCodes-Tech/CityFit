@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-//import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-//import Tooltip from 'react-bootstrap/Tooltip';
+import WorkTemp from './workout_template';
 import bicepcurls from '../exercise_imgs/Arms/bicepcurls.jpg';
 import pullup from '../exercise_imgs/Arms/pullup.jpg';
 import pushup from '../exercise_imgs/Arms/pushup.jpg';
@@ -141,6 +140,7 @@ export default class Arms extends Component {
                     Return to Catalog
                 </button>
                 </>
+            <WorkTemp prevProp={this.props.prevProp} workouts={this.state.workouts} workoutGroup='Arms Exercise' />
         )
     }
 }
