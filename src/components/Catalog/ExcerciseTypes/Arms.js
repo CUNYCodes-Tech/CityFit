@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import WorkTemp from './workout_template';
 import bicepcurls from '../exercise_imgs/Arms/bicepcurls.jpg';
 import pullup from '../exercise_imgs/Arms/pullup.jpg';
@@ -67,19 +65,19 @@ export default class Arms extends Component {
     }
         
   showModal = (e) => {
-    e.preventDefault();
-    this.getExInfo(e.target.id)
-    this.setState({ 
-        ...this.state,
-        open: true});
-  };
+        e.preventDefault();
+        this.getExInfo(e.target.id)
+        this.setState({ 
+            ...this.state,
+            open: true});
+    };
 
-  hideModal = (e) => {
-    e.preventDefault();
-    this.setState({ 
-        ...this.state,
-        open: false });
-  };
+    hideModal = (e) => {
+        e.preventDefault();
+        this.setState({ 
+            ...this.state,
+            open: false });
+    };
 
 
     backToCatalog = e =>{
@@ -88,39 +86,14 @@ export default class Arms extends Component {
     }
 
     render() {
-        console.log('arms ', this.props)
         let exercisedata = this.state.exerciseData
         return (
             <>
-                <h1 style={{marginTop: '3%'}}>Arm Excercises</h1>
                 <div className='centerFlex'>
-                    {
-                        Object.keys(this.state.workouts).map((name, i) => {
-                            let dispName = name.split('_')
-                            //let path = this.props.prevProp.location.pathname + '/' + name
-                            dispName.map((val, i) => {
-                                dispName[i] = dispName[i].charAt(0).toUpperCase() + dispName[i].slice(1)
-                            })
+                    <WorkTemp prevProp={this.props.prevProp} workouts={this.state.workouts} workoutGroup='Arms Exercise' />
 
-                            dispName = dispName.join(' ')
-
-                            return (
-                                <Card style={{ width: '18rem', margin: '15px' }} key={name + i}>
-                                    <Card.Img variant="top" src={this.state.workouts[name].img} style={{ height: '15rem' }}/>
-                                    <Card.Body>
-                                        <Card.Title>{dispName}</Card.Title>
-                                        <Card.Text>
-                                            Some quick example text to build on the card title and make up the bulk of
-                                            the card's content.
-                                        </Card.Text>
-                                        <Button variant="primary" id={name} type="button" onClick={this.showModal}>Show More</Button>
-                                        {/* <Button variant="primary" onClick={() => this.props.prevProp.history.push(path)}>Show More</Button> */}
-                                    </Card.Body>
-                                </Card>
-                            )
-                        })
-                    }
-                    <Modal open={this.state.open}
+                    <Modal 
+                        open={this.state.open}
                         onClose={this.hideModal}
                         aria-labelledby="simple-modal-title"
                         aria-describedby="simple-modal-description"
@@ -131,16 +104,7 @@ export default class Arms extends Component {
                         </div>
                     </Modal>
                 </div>
-
-                <button
-                    variant ='contained'
-                    color = 'primary'
-                    onClick = {this.backToCatalog}
-                > 
-                    Return to Catalog
-                </button>
-                </>
-            <WorkTemp prevProp={this.props.prevProp} workouts={this.state.workouts} workoutGroup='Arms Exercise' />
+            </> 
         )
     }
 }

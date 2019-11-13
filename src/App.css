@@ -12,6 +12,10 @@ body {
   color: #09d3ac;
 }
 
+.navbar {
+    box-shadow: 0px 3px 5px lightgrey;
+}
+
 #loginModal {
   display: flex;
   flex-direction: column;
