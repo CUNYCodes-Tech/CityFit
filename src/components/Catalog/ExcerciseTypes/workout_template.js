@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 
 export default class WorkTemp extends Component {
     render() {
+        console.log(this.props.prevProp.location.pathname)
         return (
             <>
                 <h1 style={{marginTop: '3%'}}>{this.props.workoutGroup}</h1>
@@ -27,7 +28,7 @@ export default class WorkTemp extends Component {
                                             Some quick example text to build on the card title and make up the bulk of
                                             the card's content.
                                         </Card.Text>
-                                        <Button variant="primary" onClick={() => this.props.prevProp.history.push(path)}>Show More</Button>
+                                        <Button variant="primary" onClick={() => this.props.getExInfo(name)}>Show More</Button>
                                     </Card.Body>
                                 </Card>
                             )

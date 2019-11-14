@@ -59,42 +59,42 @@ export default class Arms extends Component {
             let data = snapshot.val()
             this.setState({
                 exerciseData: {...data}
-            })
-        }) 
-        
+            }, this.handleModal())
+        })
+    }
+
+    handleModal() {
+        this.setState({
+            ...this.state,
+            open: !this.state.open
+        })
     }
         
-  showModal = (e) => {
-        e.preventDefault();
-        this.getExInfo(e.target.id)
-        this.setState({ 
-            ...this.state,
-            open: true});
-    };
+    // showModal = (e) => {
+    //     e.preventDefault();
+    //     this.getExInfo(e.target.id)
+    //     this.setState({ 
+    //         ...this.state,
+    //         open: true});
+    // };
 
-    hideModal = (e) => {
-        e.preventDefault();
-        this.setState({ 
-            ...this.state,
-            open: false });
-    };
-
-
-    backToCatalog = e =>{
-        e.preventDefault();
-        this.props.backToCatalog();
-    }
+    // hideModal = (e) => {
+    //     e.preventDefault();
+    //     this.setState({ 
+    //         ...this.state,
+    //         open: false });
+    // };
 
     render() {
         let exercisedata = this.state.exerciseData
         return (
             <>
                 <div className='centerFlex'>
-                    <WorkTemp prevProp={this.props.prevProp} workouts={this.state.workouts} workoutGroup='Arms Exercise' />
+                    <WorkTemp prevProp={this.props.prevProp} workouts={this.state.workouts} workoutGroup='Arms Exercise' getExInfo={this.getExInfo} />
 
                     <Modal 
                         open={this.state.open}
-                        onClose={this.hideModal}
+                        onClose={() => this.handleModal()}
                         aria-labelledby="simple-modal-title"
                         aria-describedby="simple-modal-description"
                     >
