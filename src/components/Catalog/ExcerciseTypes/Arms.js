@@ -7,10 +7,10 @@ import reversecurl from '../exercise_imgs/Arms/reversecurl.jpg';
 import tricepextenstion from '../exercise_imgs/Arms/tricepextenstion.jpg';
 import tricepkickback from '../exercise_imgs/Arms/tricepkickback.jpg';
 import tricepdip from '../exercise_imgs/Arms/tricepdip.jpg';
-import '../catalog.css'
 import { Modal } from '@material-ui/core';
 import '../../../App.css';
 import firebase from '../../../base';
+import '../catalog.css'
 
 export default class Arms extends Component {
     constructor(props) {
@@ -69,21 +69,6 @@ export default class Arms extends Component {
             open: !this.state.open
         })
     }
-        
-    // showModal = (e) => {
-    //     e.preventDefault();
-    //     this.getExInfo(e.target.id)
-    //     this.setState({ 
-    //         ...this.state,
-    //         open: true});
-    // };
-
-    // hideModal = (e) => {
-    //     e.preventDefault();
-    //     this.setState({ 
-    //         ...this.state,
-    //         open: false });
-    // };
 
     render() {
         let exercisedata = this.state.exerciseData
@@ -97,10 +82,11 @@ export default class Arms extends Component {
                         onClose={() => this.handleModal()}
                         aria-labelledby="simple-modal-title"
                         aria-describedby="simple-modal-description"
+                        className='modalContainer'
                     >
-                        <div>
+                        <div className='modalContent'>
                             <iframe title="Exercise Details" width="560" height="315" src={exercisedata.video} frameBorder="0" allowFullScreen></iframe>
-                            <h3>{exercisedata.description}</h3>
+                            <p>{exercisedata.description}</p>
                         </div>
                     </Modal>
                 </div>

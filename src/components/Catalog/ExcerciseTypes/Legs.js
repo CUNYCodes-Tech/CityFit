@@ -7,11 +7,17 @@ import jsquat from '../exercise_imgs/Legs/jumpsquat.jpg';
 import lunge from '../exercise_imgs/Legs/lunge.jpg';
 import squat from '../exercise_imgs/Legs/squat.jpg';
 import sup from '../exercise_imgs/Legs/stepup.jpg';
+import { Modal } from '@material-ui/core';
+import firebase from '../../../base';
+import '../catalog.css';
 
 export default class Legs extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            open: false,
+            exerciseData : {},
+            Exercise_Name: 'None',
             workouts: {
                 barbell_squat: {
                     img: squat,
@@ -45,9 +51,44 @@ export default class Legs extends Component {
         }
     }
     
+    getExInfo = (name) => {
+        //console.log(name)
+        const ExData = firebase.database().ref('Exercises/Legs/' + name );
+        ExData.on('value', (snapshot) => {
+            let data = snapshot.val()
+            this.setState({
+                exerciseData: {...data}
+            }, this.handleModal())
+        })
+    }
+
+    handleModal() {
+        this.setState({
+            ...this.state,
+            open: !this.state.open
+        })
+    }
+
     render() {
+        let exercisedata = this.state.exerciseData
+        
         return (
-            <WorkTemp prevProp={this.props.prevProp} workouts={this.state.workouts} workoutGroup='Leg Exercise' />  
+            <>
+                <WorkTemp prevProp={this.props.prevProp} workouts={this.state.workouts} workoutGroup='Leg Exercise' getExInfo={this.getExInfo} />  
+
+                <Modal 
+                    open={this.state.open}
+                    onClose={() => this.handleModal()}
+                    aria-labelledby="simple-modal-title"
+                    aria-describedby="simple-modal-description"
+                    className='modalContainer'
+                >
+                    <div className='modalContent'>
+                        <iframe title="Exercise Details" width="560" height="315" src={exercisedata.video} frameBorder="0" allowFullScreen></iframe>
+                        <p>{exercisedata.description}</p>
+                    </div>
+                </Modal>
+            </>
         )
     }
 }
