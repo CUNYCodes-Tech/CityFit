@@ -17,6 +17,7 @@ export default class CustomNav extends Component {
                         <Nav.Link href='/signup'>Sign Up</Nav.Link>
                         <Nav.Link href='/catalog'>Catalog</Nav.Link>
                         <Nav.Link href='/GymLocation'>Gym Locations</Nav.Link>
+                        <Nav.Link href='/Forum'>Forums</Nav.Link>
                     </Nav>
                     <Link to='#' onClick={this.handleOpenModal}>Login</Link>
                 </Navbar.Collapse>  

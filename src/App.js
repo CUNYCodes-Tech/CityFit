@@ -64,6 +64,7 @@ class App extends Component {
                     <Nav.Link href='/profile'>Profile</Nav.Link>
                     <Nav.Link href='/catalog'>Catalog</Nav.Link>
                     <Nav.Link href='/GymLocation'>Gym Locations</Nav.Link>
+                    <Nav.Link href='/Forum'> Fit Forums</Nav.Link>
                 </Nav>
                 <Nav>
                 {

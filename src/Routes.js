@@ -11,6 +11,7 @@ import Catalog from './components/Catalog/CatalogHome';
 import Workouts from './components/Catalog/CatalogNavigator';
 import GymLocation from './components/GymLocation/GymNavigator';
 import Arms from './components/Catalog/ExcerciseTypes/Arms';
+import Forum from './components/Forum/Forum';
 
 export default class Routes extends Component {
     render() {
@@ -26,6 +27,7 @@ export default class Routes extends Component {
                     <Route path='/catalog/:category' component={Workouts} />
                     {/* <Route path='/catalog/:category/:workout' component={Arms} />  */}
                     <Route exact path='/gym_location' component={GymLocation} />
+                    <Route exact path='/forum' component={Forum}/> 
                 </div>
             </Router>
         )
