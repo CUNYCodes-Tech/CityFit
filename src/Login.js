@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from "react";
+import React, { useContext } from "react";
 import { withRouter, Redirect, Link } from "react-router-dom";
 import app from "./base.js";
 import { AuthContext } from "./Auth.js";
@@ -6,8 +6,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import './App.css';
 
-const Login = ({ history }) => {
-  const handleLogin = useCallback(
+const Login = () => {
+  const handleLogin =
     async event => {
       event.preventDefault();
       const { email, password } = event.target.elements;
@@ -18,9 +18,7 @@ const Login = ({ history }) => {
       } catch (error) {
         alert(error);
       }
-    },
-    [history]
-  );
+    }
 
   const { currentUser } = useContext(AuthContext);
 

@@ -12,9 +12,10 @@ export default class WorkTemp extends Component {
                     {
                         Object.keys(this.props.workouts).map((name, i) => {
                             let dispName = name.split('_')
-                            let path = this.props.prevProp.location.pathname + '/' + name
+                            
                             dispName.map((val, i) => {
                                 dispName[i] = dispName[i].charAt(0).toUpperCase() + dispName[i].slice(1)
+                                return true
                             })
 
                             dispName = dispName.join(' ')

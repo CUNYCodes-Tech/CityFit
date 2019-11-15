@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { AuthProvider } from './Auth';
 import Routes from './Routes';
-// import Nav from './CustomNav';
 import Login from './Login';
 import firebase from './base';
 import { Modal } from '@material-ui/core';
@@ -51,7 +50,6 @@ class App extends Component {
   }
 
   render() {
-    // No longer using CustomNav.js, moved the nav to app
     return (
       <div className='App'>
         <AuthProvider>
