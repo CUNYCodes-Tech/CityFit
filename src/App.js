@@ -53,48 +53,52 @@ class App extends Component {
   render() {
     // No longer using CustomNav.js, moved the nav to app
     return (
-      <AuthProvider>
-        <Navbar bg='light' expand='lg' fixed="top">
-          <Navbar.Brand href='/'>CityFit</Navbar.Brand>
-          <Navbar.Toggle aria-controls='basic-navbar-nav' />
-          <Navbar.Collapse id='basic-navbar-nav'>
-              <Nav className='mr-auto'>
-                  <Nav.Link href='/'>Home</Nav.Link>
-                  <Nav.Link href='/profile'>Profile</Nav.Link>
-                  <Nav.Link href='/catalog'>Catalog</Nav.Link>
-                  <Nav.Link href='/GymLocation'>Gym Locations</Nav.Link>
-              </Nav>
-              <Nav>
-              {
-                this.state.loggedIn ? 
-                  <Nav.Link href='#' onClick={this.handleSignOut}>Sign Out</Nav.Link> 
-                  : 
-                  (
-                    <>
-                      <Nav.Link href='#' onClick={this.handleOpenModal}>Login</Nav.Link>
-                      <Nav.Link href='/signup'>Sign Up</Nav.Link>
-                    </>
-                  )
-              }
-              </Nav>
-          </Navbar.Collapse>  
-        </Navbar>
+      <div className='App'>
+        <AuthProvider>
+          <Navbar bg='light' expand='lg' sticky='top'>
+            <Navbar.Brand href='/'>CityFit</Navbar.Brand>
+            <Navbar.Toggle aria-controls='basic-navbar-nav' />
+            <Navbar.Collapse id='basic-navbar-nav'>
+                <Nav className='mr-auto'>
+                    <Nav.Link href='/'>Home</Nav.Link>
+                    <Nav.Link href='/profile'>Profile</Nav.Link>
+                    <Nav.Link href='/catalog'>Catalog</Nav.Link>
+                    <Nav.Link href='/gym_location'>Gym Locations</Nav.Link>
+                    <Nav.Link href='/forum'> Fit Forums</Nav.Link>
+                </Nav>
+                <Nav>
+                {
+                  this.state.loggedIn ? 
+                    <Nav.Link href='#' onClick={this.handleSignOut}>Sign Out</Nav.Link> 
+                    : 
+                    (
+                      <>
+                        <Nav.Link href='#' onClick={this.handleOpenModal}>Login</Nav.Link>
+                        <Nav.Link href='/signup'>Sign Up</Nav.Link>
+                      </>
+                    )
+                }
+                </Nav>
+            </Navbar.Collapse>  
+          </Navbar>
 
-        <Modal 
-          open={this.state.open}
-          onClose={this.handleOpenModal}
-          onSubmit={this.handleLoggingIn}
-          aria-labelledby='login-modal'
-          aria-describedby='login-modal'
-          id='loginModal'
-        >
-          <div>
-            <Login handleModal={this.handleOpenModal} />
-          </div>
-        </Modal>
+          <Modal 
+            open={this.state.open}
+            onClose={this.handleOpenModal}
+            onSubmit={this.handleLoggingIn}
+            aria-labelledby='login-modal'
+            aria-describedby='login-modal'
+            id='loginModal'
+          >
+            <div>
+              <Login handleModal={this.handleOpenModal} />
+            </div>
+          </Modal>
 
-        <Routes />
-      </AuthProvider>
+          <Routes />
+        </AuthProvider>
+      </div>
+      
     );
   }
 }

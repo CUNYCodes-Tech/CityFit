@@ -7,8 +7,11 @@ import LandingPage from './components/LandingPage/LandingPage';
 import Login from './Login';
 import SignUp from './SignUp';
 import PrivateRoute from './PrivateRoute';
-import Catalog from './components/Catalog/CatalogNavigator';
+import Catalog from './components/Catalog/CatalogHome';
+import Workouts from './components/Catalog/CatalogNavigator';
 import GymLocation from './components/GymLocation/GymNavigator';
+import Arms from './components/Catalog/ExcerciseTypes/Arms';
+import Forum from './components/Forum/Forum';
 
 export default class Routes extends Component {
     render() {
@@ -21,7 +24,10 @@ export default class Routes extends Component {
                     <Route exact path='/login' component={Login} />
                     <Route exact path='/signup' component={SignUp} />
                     <Route exact path='/catalog' component={Catalog} />
+                    <Route path='/catalog/:category' component={Workouts} />
+                    {/* <Route path='/catalog/:category/:workout' component={Arms} />  */}
                     <Route exact path='/gym_location' component={GymLocation} />
+                    <Route exact path='/forum' component={Forum}/> 
                 </div>
             </Router>
         )
