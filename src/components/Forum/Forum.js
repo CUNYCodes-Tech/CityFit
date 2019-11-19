@@ -7,9 +7,7 @@ export default class Forum extends Component {
     render() {
         return (
             <div>
-                <div className = "header">
-                    Fit Forum
-                </div>
+                <h1>Fit Forums</h1>
                 <br/>
                 <h3>
                     The City Fit Forums are a place for users new and old to share their thoughts, experiences

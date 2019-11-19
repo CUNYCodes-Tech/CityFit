@@ -44,7 +44,7 @@ export default class Arms extends Component {
                     img: reversecurl,
                     desc: ''     
                 },
-                tricep_extenstion: {
+                tricep_extension: {
                     img: tricepextenstion,
                     desc: ''     
                 }
