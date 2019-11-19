@@ -3,13 +3,42 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import './landingPage.css';
 
 
+
 export default class LandingPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
             open: false,
+            recentBlogPost: {
+                name: '',
+                url: ''
+            }
         }
     }
+
+    FetchDataFromRssFeed(){
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = () => {
+            if (request.readyState === 4 && request.status === 200) {
+                var myObj = JSON.parse(request.responseText);
+                for(var i = 0; i < 1; i++){
+                    this.setState({
+                        recentBlogPost: {
+                            name: myObj.items[i].title,
+                            url: myObj.items[i].link
+                        }
+                    });
+                }
+            }
+        }
+        request.open("GET", "blog.myfitnesspal.com/feed ", true);
+        request.send();
+    }
+
+    componentDidMount(){
+        {this.FetchDataFromRssFeed()}
+    }
+
     render() {
         return (
             <div>
@@ -25,9 +54,10 @@ export default class LandingPage extends Component {
                 </div>
                 <div className='landingSection'>
                     <h1>Section 2</h1>
-                    <h3>
+                    <div>
                         Fitness News Through RSS Feed
-                    </h3> 
+                        Check out our blog: <a target="_blank"rel="noreferrer noopener" href={this.state.recentBlogPost.url}>{this.state.recentBlogPost.name}</a>
+                    </div> 
                 </div>
                 <div className='landingSection'>
                     <h1>Section 3</h1>
