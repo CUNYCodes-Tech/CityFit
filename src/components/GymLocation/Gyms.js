@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import Card from 'react-bootstrap/Card';
 import Rating from '@material-ui/lab/Rating';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';

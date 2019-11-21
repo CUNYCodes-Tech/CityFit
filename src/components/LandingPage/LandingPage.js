@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import axios from 'axios';
 import convert from 'xml-js';
+import ReactHtmlParser from 'react-html-parser';
 import './landingPage.css';
 
 export default class LandingPage extends Component {
@@ -44,7 +45,9 @@ export default class LandingPage extends Component {
             console.log(JSON.parse(convert.xml2json(res.data, {compact: true, spaces: 4})))
             this.setState({
                 ...this.state,
-                rss: JSON.parse(convert.xml2json(res.data, {compact: true, spaces: 4})).rss.channel.item
+                rss: JSON.parse(
+                        convert.xml2json(res.data, {compact: true, spaces: 4})
+                    ).rss.channel.item.slice(0, 4)
             })
         })
         .catch((err) => {
@@ -72,18 +75,18 @@ export default class LandingPage extends Component {
                         Fitness News Through RSS Feed
                         Check out our blog: <a target="_blank"rel="noreferrer noopener" href={this.state.recentBlogPost.url}>{this.state.recentBlogPost.name}</a>
                     </div>  */}
-                    {
-                        this.state.rss.map((data) => {
-                            return (
-                                <div key={data.pubDate._text}>
-                                    <p>{data.title._text}</p>
-                                    <>
-                                        {data.description._cdata}
-                                    </>
-                                </div>
-                            )
-                        })
-                    }
+                    <div id='rssFeed-cont'>
+                        {
+                            this.state.rss.map((data) => {
+                                return (
+                                    <div key={data.pubDate._text} className='rssFeeds'>
+                                        <h3 className='rssTitle'>{data.title._text}</h3>
+                                        {ReactHtmlParser(data.description._cdata)}
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
                 </div>
                 <div className='landingSection'>
                     <h1>Section 3</h1>
