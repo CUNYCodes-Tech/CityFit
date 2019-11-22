@@ -9,7 +9,6 @@ import PrivateRoute from './PrivateRoute';
 import Catalog from './components/Catalog/CatalogHome';
 import Workouts from './components/Catalog/CatalogNavigator';
 import Gyms from './components/GymLocation/Gyms';
-import Arms from './components/Catalog/ExcerciseTypes/Arms';
 import Forum from './components/Forum/Forum';
 
 export default class Routes extends Component {
