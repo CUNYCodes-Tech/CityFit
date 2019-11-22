@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import './App.css';
 
 const Login = () => {
-  const handleLogin =
+  const handleLogin = (
     async event => {
       event.preventDefault();
       const { email, password } = event.target.elements;
@@ -19,6 +19,7 @@ const Login = () => {
         alert(error);
       }
     }
+  )
 
   const { currentUser } = useContext(AuthContext);
 

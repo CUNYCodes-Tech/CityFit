@@ -45,7 +45,7 @@ class CatalogHome extends Component {
             Object.keys(this.state.catagories).map((name, i) => {
               let disName = name.charAt(0).toUpperCase() + name.slice(1)
               return (
-                <Card style={{ width: '20rem', margin: '15px' }} key={name + i}>
+                <Card style={{ width: '20rem', margin: '15px', boxShadow: '3px 4px 8px lightgrey' }} key={name + i}>
                   <OverlayTrigger
                     placement='bottom'
                     overlay={
