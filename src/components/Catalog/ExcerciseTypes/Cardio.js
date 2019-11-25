@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
 import WorkTemp from './workout_template';
-import bicepcurls from '../exercise_imgs/Arms/bicepcurls.jpg';
-import pullup from '../exercise_imgs/Arms/pullup.jpg';
-import pushup from '../exercise_imgs/Arms/pushup.jpg';
-import reversecurl from '../exercise_imgs/Arms/reversecurl.jpg';
-import tricepextenstion from '../exercise_imgs/Arms/tricepextenstion.jpg';
-import tricepkickback from '../exercise_imgs/Arms/tricepkickback.jpg';
-import tricepdip from '../exercise_imgs/Arms/tricepdip.jpg';
 import { Modal } from '@material-ui/core';
 import '../../../App.css';
 import firebase from '../../../base';
 import '../catalog.css'
 
-export default class Arms extends Component {
+export default class Cardio extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -20,45 +13,30 @@ export default class Arms extends Component {
             exerciseData : {},
             Exercise_Name: 'None',
             workouts: {
-                bicep_curls: {
-                    img: bicepcurlsUrl,
+                cycling: {
+                    img: cyclingUrl,
                     desc: ''
                 },
-                push_ups: {
-                    img: pushupUrl,
+                kick_boxing: {
+                    img: kickboxingURL,
                     desc: ''     
                 },
-                pull_ups: {
-                    img: pullupUrl,
+                running: {
+                    img: runningUrl,
                     desc: ''     
                 },
-                tricep_dips: {
-                    img: tricepdipUrl,
+                swimming: {
+                    img: swimmingUrl,
                     desc: ''
                 },
-                dumbbell_kickback: {
-                    img: tricepkickbackUrl,
-                    desc: ''     
-                },
-                reverse_curl: {
-                    img: reversecurlURl,
-                    desc: ''     
-                },
-                tricep_extension: {
-                    img: tricepextenstionUrl,
-                    desc: ''     
-                },
-                one_arm: {
-                    img: onearmUrl,
-                    desc: ''     
-                }
+               
             }
         }
     }
 
     getExInfo = (name) => {
         //console.log(name)
-        const ExData = firebase.database().ref('Exercises/Arms/' + name );
+        const ExData = firebase.database().ref('Exercises/Cardio/' + name );
         ExData.on('value', (snapshot) => {
             let data = snapshot.val()
             this.setState({
@@ -79,7 +57,7 @@ export default class Arms extends Component {
         return (
             <>
                 <div className='centerFlex'>
-                    <WorkTemp prevProp={this.props.prevProp} workouts={this.state.workouts} workoutGroup='Arms Exercise' getExInfo={this.getExInfo} />
+                    <WorkTemp prevProp={this.props.prevProp} workouts={this.state.workouts} workoutGroup='Cardio Exercises' getExInfo={this.getExInfo} />
 
                     <Modal 
                         open={this.state.open}
@@ -98,4 +76,3 @@ export default class Arms extends Component {
         )
     }
 }
-
