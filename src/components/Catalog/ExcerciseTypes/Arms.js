@@ -51,7 +51,12 @@ export default class Arms extends Component {
                 one_arm: {
                     img: onearmUrl,
                     desc: ''     
+                },
+                dumbbell_punch: {
+                    img: punchUrl,
+                    desc: ''     
                 }
+                
             }
         }
     }
