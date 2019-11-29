@@ -56,7 +56,7 @@ export default class LandingPage extends Component {
     }
 
     render() {
-        console.log(this.state.rss)
+
         return (
             <div>
                <Jumbotron fluid>
