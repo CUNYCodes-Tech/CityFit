@@ -5,7 +5,7 @@ import '../../../App.css';
 import firebase from '../../../base';
 import '../catalog.css'
 
-export default class Cardio extends Component {
+export default class Abs extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,28 +13,28 @@ export default class Cardio extends Component {
             exerciseData : {},
             Exercise_Name: 'None',
             workouts: {
-                cycling: {
-                    img: cyclingUrl,
+                ab_wheel: {
+                    img: wheelUrl,
                     desc: ''
                 },
-                jumping_rope: {
+                flutter_kick: {
                     img: ropeUrl,
                     desc: ''
                 },
-                kick_boxing: {
+                leg_raise: {
                     img: kickboxingURL,
                     desc: ''     
                 },
-                rowing: {
-                    img: rowUrl,
+                plank: {
+                    img: plankUrl,
                     desc: ''
                 },
-                running: {
-                    img: runningUrl,
+                side_jackknife: {
+                    img: jackUrl,
                     desc: ''     
                 },
-                swimming: {
-                    img: swimmingUrl,
+                sit_ups: {
+                    img: situpUrl,
                     desc: ''
                 },
                
@@ -44,7 +44,7 @@ export default class Cardio extends Component {
 
     getExInfo = (name) => {
         //console.log(name)
-        const ExData = firebase.database().ref('Exercises/Cardio/' + name );
+        const ExData = firebase.database().ref('Exercises/Abs/' + name );
         ExData.on('value', (snapshot) => {
             let data = snapshot.val()
             this.setState({
@@ -65,7 +65,7 @@ export default class Cardio extends Component {
         return (
             <>
                 <div className='centerFlex'>
-                    <WorkTemp prevProp={this.props.prevProp} workouts={this.state.workouts} workoutGroup='Cardio Exercises' getExInfo={this.getExInfo} />
+                    <WorkTemp prevProp={this.props.prevProp} workouts={this.state.workouts} workoutGroup='Ab Exercises' getExInfo={this.getExInfo} />
 
                     <Modal 
                         open={this.state.open}

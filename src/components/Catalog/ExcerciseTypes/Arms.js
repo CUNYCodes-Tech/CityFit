@@ -48,7 +48,7 @@ export default class Arms extends Component {
                     img: tricepextenstionUrl,
                     desc: ''     
                 },
-                one_arm: {
+                one_arm_cable_press: {
                     img: onearmUrl,
                     desc: ''     
                 },
