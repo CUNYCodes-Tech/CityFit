@@ -22,12 +22,12 @@ class App extends Component {
     this.handleLoggingIn()
   }
 
-  handleOpenModal = () => {
-    this.setState({
-        ...this.state,
-        open: !this.state.open
-    })
-  }
+  // handleOpenModal = () => {
+  //   this.setState({
+  //       ...this.state,
+  //       open: !this.state.open
+  //   })
+  // }
 
   handleLoggingIn = () => {
     firebase.auth().onAuthStateChanged((user) => {
@@ -71,7 +71,7 @@ class App extends Component {
                     : 
                     (
                       <>
-                        <Nav.Link href='#' onClick={this.handleOpenModal}>Login</Nav.Link>
+                        <Nav.Link href='/login'>Login</Nav.Link>
                         <Nav.Link href='/signup'>Sign Up</Nav.Link>
                       </>
                     )
@@ -79,19 +79,6 @@ class App extends Component {
                 </Nav>
             </Navbar.Collapse>  
           </Navbar>
-
-          <Modal 
-            open={this.state.open}
-            onClose={this.handleOpenModal}
-            onSubmit={this.handleLoggingIn}
-            aria-labelledby='login-modal'
-            aria-describedby='login-modal'
-            id='loginModal'
-          >
-            <div>
-              <Login handleModal={this.handleOpenModal} />
-            </div>
-          </Modal>
 
           <Routes />
         </AuthProvider>

@@ -56,9 +56,9 @@ export default class LandingPage extends Component {
     }
 
     render() {
-        console.log(this.state.rss)
+
         return (
-            <div>
+            <div className='tint'>
                <Jumbotron fluid>
                     <h1 id='jumbotext1'>Anything Is Possible</h1>
                     <h1 id='jumbotext2'>Dream Big</h1>
