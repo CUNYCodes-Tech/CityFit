@@ -23,7 +23,7 @@ const styles = {
     }
 }
 
-export class UserForm extends Component {
+class UserForm extends Component {
     //eventually make height and weight scroll menu's
     state = {
         step: 1,
@@ -75,32 +75,39 @@ export class UserForm extends Component {
         switch (step) {
             case 1:
                 return (
-                    <FormUserDetails
-                    nextStep={this.nextStep}
-                    handleChange={this.handleChange}
-                    user={user}
-                    classes={classes}
-                    />   
+                    <div style={{height: '100vh'}}>
+                        <FormUserDetails
+                            nextStep={this.nextStep}
+                            handleChange={this.handleChange}
+                            user={user}
+                            classes={classes}
+                        /> 
+                    </div>  
                 )
             case 2:
                 return (
-                    <FormPersonalDetails
-                       nextStep={this.nextStep}
-                       prevStep={this.prevStep}
-                       handleChange={this.handleChange}
-                       user={user}
-                       classes={classes}
-                    />
+                    <div style={{height: '100vh'}}>
+                        <FormPersonalDetails
+                            nextStep={this.nextStep}
+                            prevStep={this.prevStep}
+                            handleChange={this.handleChange}
+                            user={user}
+                            classes={classes}
+                        />
+                    </div>
                 )
             case 3: 
                 return (
-                    <Confirm
-                        nextStep={this.nextStep}
-                        prevStep={this.prevStep}
-                        twoStepsBack={this.twoStepsBack}
-                        user={user}
-                        classes={classes}
-                    />)
+                    <div style={{height: '100vh'}}>
+                        <Confirm
+                            nextStep={this.nextStep}
+                            prevStep={this.prevStep}
+                            twoStepsBack={this.twoStepsBack}
+                            user={user}
+                            classes={classes}
+                        />
+                        </div>
+                )
             case 4: 
                 return <Redirect to="/" />;
             default:

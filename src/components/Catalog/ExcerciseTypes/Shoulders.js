@@ -1,12 +1,5 @@
 import React, { Component } from 'react'
 import WorkTemp from './workout_template';
-import arnold from '../exercise_imgs/Shoulder/arnold.jpg';
-import fraise from '../exercise_imgs/Shoulder/frontraise.jpg';
-import inclinerow from '../exercise_imgs/Shoulder/inclinerow.jpg';
-import lraise from '../exercise_imgs/Shoulder/lateralraise.jpg';
-import opress from '../exercise_imgs/Shoulder/overheadpress.jpg';
-import pushpress from '../exercise_imgs/Shoulder/pushpress.jpg';
-import uprightrow from '../exercise_imgs/Shoulder/uprightrow.jpg';
 import { Modal } from '@material-ui/core';
 import firebase from '../../../base';
 import '../catalog.css';
@@ -19,41 +12,27 @@ export default class Shoulders extends Component {
             open: false,
             exerciseData : {},
             Exercise_Name: 'None',
-            workouts: {
-                upright_row: {
-                    img: uprightrow,
-                    desc: ''
-                },
-                front_raise: {
-                    img: fraise,
-                    desc: ''
-                },
-                barbell_push_press: {
-                    img: pushpress,
-                    desc: ''
-                },
-                dumbbell_incline_row: {
-                    img: inclinerow,
-                    desc: ''
-                },
-                seated_overhead_dumbbell_press: {
-                    img: opress,
-                    desc: ''
-                },
-                arnold_press: {
-                    img: arnold,
-                    desc: ''
-                },
-                dumbbell_lateral_raise: {
-                    img: lraise,
-                    desc: ''
-                },
-            }
+            workouts: {}
         }
+    }
+
+    componentDidMount() {
+        this.getCategory()
+    }
+
+    getCategory() {
+        let cataData = firebase.database().ref('Exercises/Shoulders');
+        cataData.on('value', (snapshot) => {
+            let data = snapshot.val()
+            this.setState({
+                workouts: {
+                    ...data
+                }
+            })
+        })
     }
     
     getExInfo = (name) => {
-        //console.log(name)
         const ExData = firebase.database().ref('Exercises/Shoulders/' + name );
         ExData.on('value', (snapshot) => {
             let data = snapshot.val()

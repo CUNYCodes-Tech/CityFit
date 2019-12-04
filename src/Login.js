@@ -23,14 +23,19 @@ const Login = () => {
 
   const { currentUser } = useContext(AuthContext);
 
-  if (currentUser) {
-    return <Redirect to="/" />;
+  if (currentUser === 'wait') {
+    return <Redirect to="/login" />;
+  } else if (currentUser) {
+    return <Redirect to='/' />;
   }
 
   return (
-    <form onSubmit={handleLogin} id='login'>
+    <form onSubmit={handleLogin} id='loginContainer'>
+      <div id='loginImage'></div>
+
         <div id='login'>
-          <h3>Enter Your Login Credentials</h3>
+          <h3>Welcome to CityFit</h3>
+          <h6>Please Enter Your Email and Password</h6>
           <TextField
             name="email"
             label='Email'

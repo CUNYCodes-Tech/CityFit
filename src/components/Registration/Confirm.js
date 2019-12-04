@@ -63,7 +63,7 @@ class Confirm extends Component {
         const infoName = ['First Name', 'Last Name', 'Borough', 'Gender', 'Height', 'Weight', 'Body Type', 'Fitness Goal'];
 
         return (
-            <form>
+            <form className='signUp'>
                 <React.Fragment>
                     <Typography variant='h4'>Confirm Your Information</Typography>
                     <List dense={true}>
