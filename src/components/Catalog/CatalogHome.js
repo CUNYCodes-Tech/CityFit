@@ -31,6 +31,14 @@ class CatalogHome extends Component {
         shoulders: {
           img: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjQzMzEwfQ&auto=format&fit=crop&w=1349&q=80',
           credit: 'Photo by John Arano on Unsplash'
+        },
+        cardio: {
+          img: 'https://images.unsplash.com/photo-1427384906349-30452365b5e8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80',
+          credit: 'Photo by Curtis MacNewton on Unsplash'
+        },
+        abs: {
+          img: 'https://images.unsplash.com/photo-1529265245520-9bb40daef5bb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1094&q=80',
+          credit: 'Photo by Tibout Maes on Unsplash'
         }
       }
     }
@@ -45,7 +53,7 @@ class CatalogHome extends Component {
             Object.keys(this.state.catagories).map((name, i) => {
               let disName = name.charAt(0).toUpperCase() + name.slice(1)
               return (
-                <Card style={{ width: '20rem', margin: '15px', boxShadow: '3px 4px 8px lightgrey' }} key={name + i}>
+                <Card style={{ width: '20rem', margin: '15px', boxShadow: '3px 4px 8px grey' }} key={name + i}>
                   <OverlayTrigger
                     placement='bottom'
                     overlay={
@@ -54,7 +62,7 @@ class CatalogHome extends Component {
                       </Tooltip>
                     }
                   >
-                    <Card.Img variant="top" src={this.state.catagories[name].img} credit={this.state.catagories[name].credit}/>
+                    <Card.Img variant="top" src={this.state.catagories[name].img} credit={this.state.catagories[name].credit} height='225em' width='1350em'/>
                   </OverlayTrigger>
                   <Card.Body>
                     <Card.Title>{disName}</Card.Title>

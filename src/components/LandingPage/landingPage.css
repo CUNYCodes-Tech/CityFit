@@ -26,8 +26,12 @@
     background-image: url("https://images.unsplash.com/photo-1505578475278-c54f1cb8beff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
 }
 
+.tint {
+    background: rgba(255,255,255, 0.4)
+}
+
 .landingSection {
-    width: 100vw;
+    width: 100%;
     margin: 0 auto;
     margin-top: 4rem;
 }

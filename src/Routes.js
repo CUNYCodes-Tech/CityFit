@@ -15,17 +15,15 @@ export default class Routes extends Component {
     render() {
         return (
             <Router>
-                <div className='App'>
-                    <PrivateRoute exact path='/userform' component={UserForm} />
-                    <PrivateRoute exact path='/profile' component={Profile} />
-                    <Route exact path='/' component={LandingPage} />
-                    <Route exact path='/login' component={Login} />
-                    <Route exact path='/signup' component={SignUp} />
-                    <Route exact path='/catalog' component={Catalog} />
-                    <Route path='/catalog/:category' component={Workouts} />
-                    <Route exact path='/gym_location' component={Gyms} />
-                    <Route exact path='/forum' component={Forum}/> 
-                </div>
+                <PrivateRoute exact path='/userform' component={UserForm} />
+                <PrivateRoute exact path='/profile' component={Profile} />
+                <Route exact path='/' component={LandingPage} />
+                <Route exact path='/login' component={Login} />
+                <Route exact path='/signup' component={SignUp} />
+                <Route exact path='/catalog' component={Catalog} />
+                <Route path='/catalog/:category' component={Workouts} />
+                <Route exact path='/gym_location' component={Gyms} />
+                <Route exact path='/forum' component={Forum}/> 
             </Router>
         )
     }

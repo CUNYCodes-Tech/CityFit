@@ -100,31 +100,36 @@ export default class Profile extends Component {
         let regimen = this.state.regimen
         let MealPlan = this.state.MealPlan
         return (
-            <div>
-                <img src='https://images.unsplash.com/photo-1569839078801-94107e43e884?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80'
-                alt = 'User Profile' width='350' height='250'/>
+            <div className='tint' style={{height: '100vh'}}>
+                <h1 style={{marginTop: '3rem'}}>About Me</h1>
+                <div className='flex'>
+                    <div className='flex50-50'>
+                        <h5>Name: { user.firstName } { user.lastName } </h5>
+                        <h5>Borough: { user.borough }</h5>
 
-                <h3 className='mainText'>{ user.firstName } { user.lastName } </h3>
-                <h5 className='subText'>{ user.borough }</h5>
-
-                <h3 className='mainText'>Some General Information About Me</h3>
-                <h5 className='subText'>I am a { user.gender }</h5>  
-                <h5 className='subText'>I am { user.height } tall</h5>
-                <h5 className='subText'>I weigh { user.weight }lbs</h5>
-                <h5 className='subText'>I consider myself to be { user.bodyType }</h5>
-                <h5 className='subText'>My Goal is to { user.fitnessGoal }</h5>
-                <br />
-                <h5 className='subText'>first Regimen Item: {regimen.first_item}</h5>
-                <h5 className='subText'>second Regimen Item: {regimen.second_item}</h5>
-                <h5 className='subText'>third Regimen Item: {regimen.third_item}</h5>
-                <h5 className='subText'>fourth Regimen Item: {regimen.fourth_item}</h5>
-                <h5 className='subText'>fifth Regimen Item: {regimen.fifth_item}</h5>
-                <br />
-                <h5 className='subText'>first MealPlan Item: {MealPlan.first_item} </h5>
-                <h5 className='subText'>second MealPlan Item: {MealPlan.second_item}</h5>
-                <h5 className='subText'>third MealPlan Item: {MealPlan.third_item}</h5>
-                <h5 className='subText'>fourth MealPlan Item: {MealPlan.fourth_item}</h5>
-                <h5 className='subText'>fifth MealPlan Item: {MealPlan.fifth_item}</h5>
+                        <h5>Gender: { user.gender }</h5>  
+                        <h5>Height: { user.height } tall</h5>
+                        <h5>Weight: { user.weight }lbs</h5>
+                        <h5>Body Type: { user.bodyType }</h5>
+                    </div>
+                    <div className='flex50-50'>
+                        <h5>My Goal is to { user.fitnessGoal }</h5>
+                        <br/>
+                        <h4 className='underline'>Recommended Workouts</h4>
+                        <h5>First Regimen Item: {regimen.first_item}</h5>
+                        <h5>Second Regimen Item: {regimen.second_item}</h5>
+                        <h5>Third Regimen Item: {regimen.third_item}</h5>
+                        <h5>Fourth Regimen Item: {regimen.fourth_item}</h5>
+                        <h5>Fifth Regimen Item: {regimen.fifth_item}</h5>
+                        <br/>
+                        <h4 className='underline'>Recommended Meal Plan</h4>
+                        <h5>First Meal Plan Item: {MealPlan.first_item} </h5>
+                        <h5>Second Meal Plan Item: {MealPlan.second_item}</h5>
+                        <h5>Third Meal Plan Item: {MealPlan.third_item}</h5>
+                        <h5>Fourth Meal Plan Item: {MealPlan.fourth_item}</h5>
+                        <h5>Fifth Meal Plan Item: {MealPlan.fifth_item}</h5>
+                    </div>
+                </div>
             </div>
         )
     }

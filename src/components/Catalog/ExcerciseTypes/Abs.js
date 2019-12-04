@@ -12,38 +12,27 @@ export default class Abs extends Component {
             open: false,
             exerciseData : {},
             Exercise_Name: 'None',
-            workouts: {
-                ab_wheel: {
-                    img: wheelUrl,
-                    desc: ''
-                },
-                flutter_kick: {
-                    img: ropeUrl,
-                    desc: ''
-                },
-                leg_raise: {
-                    img: kickboxingURL,
-                    desc: ''     
-                },
-                plank: {
-                    img: plankUrl,
-                    desc: ''
-                },
-                side_jackknife: {
-                    img: jackUrl,
-                    desc: ''     
-                },
-                sit_ups: {
-                    img: situpUrl,
-                    desc: ''
-                },
-               
-            }
+            workouts: {}
         }
     }
 
+    componentDidMount() {
+        this.getCategory()
+    }
+
+    getCategory() {
+        let cataData = firebase.database().ref('Exercises/Abs');
+        cataData.on('value', (snapshot) => {
+            let data = snapshot.val()
+            this.setState({
+                workouts: {
+                    ...data
+                }
+            })
+        })
+    }
+
     getExInfo = (name) => {
-        //console.log(name)
         const ExData = firebase.database().ref('Exercises/Abs/' + name );
         ExData.on('value', (snapshot) => {
             let data = snapshot.val()
