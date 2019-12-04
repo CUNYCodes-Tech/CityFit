@@ -1,11 +1,5 @@
 import React, { Component } from 'react'
 import WorkTemp from './workout_template';
-import press from '../exercise_imgs/Chest/benchpress.jpg';
-import cfly from '../exercise_imgs/Chest/cablefly.jpg';
-import inclinepress from '../exercise_imgs/Chest/inclinepress.jpg';
-import pullover from '../exercise_imgs/Chest/pullover.jpg';
-import pushup from '../exercise_imgs/Chest/pushup.jpg';
-import tricepdip from '../exercise_imgs/Chest/tricepdip.jpg';
 import { Modal } from '@material-ui/core';
 import firebase from '../../../base';
 import '../catalog.css';
@@ -17,33 +11,24 @@ export default class Chest extends Component {
             open: false,
             exerciseData : {},
             Exercise_Name: 'None',
-            workouts: {
-                push_ups: {
-                    img: pushup,
-                    desc: ''
-                },
-                barbell_bench_press: {
-                    img: press,
-                    desc: ''
-                },
-                pullover: {
-                    img: pullover,
-                    desc: ''
-                },
-                dips: {
-                    img: tricepdip,
-                    desc: ''
-                },
-                cable_fly: {
-                    img: cfly,
-                    desc: ''
-                },
-                incline_dumbbell_press: {
-                    img: inclinepress,
-                    desc: ''
-                },
-            }
+            workouts: {}
         }
+    }
+
+    componentDidMount() {
+        this.getCategory()
+    }
+
+    getCategory() {
+        let cataData = firebase.database().ref('Exercises/Chest');
+        cataData.on('value', (snapshot) => {
+            let data = snapshot.val()
+            this.setState({
+                workouts: {
+                    ...data
+                }
+            })
+        })
     }
 
     getExInfo = (name) => {

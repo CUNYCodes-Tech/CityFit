@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { AuthProvider } from './Auth';
 import Routes from './Routes';
-import Login from './Login';
 import firebase from './base';
-import { Modal } from '@material-ui/core';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -13,7 +11,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-       open: false,
        loggedIn: false
     }
   }
@@ -21,13 +18,6 @@ class App extends Component {
   componentDidMount() {
     this.handleLoggingIn()
   }
-
-  // handleOpenModal = () => {
-  //   this.setState({
-  //       ...this.state,
-  //       open: !this.state.open
-  //   })
-  // }
 
   handleLoggingIn = () => {
     firebase.auth().onAuthStateChanged((user) => {

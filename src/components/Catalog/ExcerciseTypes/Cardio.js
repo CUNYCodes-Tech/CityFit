@@ -12,34 +12,24 @@ export default class Cardio extends Component {
             open: false,
             exerciseData : {},
             Exercise_Name: 'None',
-            workouts: {
-                cycling: {
-                    img: cyclingUrl,
-                    desc: ''
-                },
-                jumping_rope: {
-                    img: ropeUrl,
-                    desc: ''
-                },
-                kick_boxing: {
-                    img: kickboxingURL,
-                    desc: ''     
-                },
-                rowing: {
-                    img: rowUrl,
-                    desc: ''
-                },
-                running: {
-                    img: runningUrl,
-                    desc: ''     
-                },
-                swimming: {
-                    img: swimmingUrl,
-                    desc: ''
-                },
-               
-            }
+            workouts: {}
         }
+    }
+
+    componentDidMount() {
+        this.getCategory()
+    }
+
+    getCategory() {
+        let cataData = firebase.database().ref('Exercises/Cardio');
+        cataData.on('value', (snapshot) => {
+            let data = snapshot.val()
+            this.setState({
+                workouts: {
+                    ...data
+                }
+            })
+        })
     }
 
     getExInfo = (name) => {
@@ -47,6 +37,7 @@ export default class Cardio extends Component {
         const ExData = firebase.database().ref('Exercises/Cardio/' + name );
         ExData.on('value', (snapshot) => {
             let data = snapshot.val()
+            console.log(data)
             this.setState({
                 exerciseData: {...data}
             }, this.handleModal())

@@ -1,12 +1,5 @@
 import React, { Component } from 'react';
 import WorkTemp from './workout_template';
-import bicepcurls from '../exercise_imgs/Arms/bicepcurls.jpg';
-import pullup from '../exercise_imgs/Arms/pullup.jpg';
-import pushup from '../exercise_imgs/Arms/pushup.jpg';
-import reversecurl from '../exercise_imgs/Arms/reversecurl.jpg';
-import tricepextenstion from '../exercise_imgs/Arms/tricepextenstion.jpg';
-import tricepkickback from '../exercise_imgs/Arms/tricepkickback.jpg';
-import tricepdip from '../exercise_imgs/Arms/tricepdip.jpg';
 import { Modal } from '@material-ui/core';
 import '../../../App.css';
 import firebase from '../../../base';
@@ -19,46 +12,24 @@ export default class Arms extends Component {
             open: false,
             exerciseData : {},
             Exercise_Name: 'None',
-            workouts: {
-                bicep_curls: {
-                    img: bicepcurlsUrl,
-                    desc: ''
-                },
-                push_ups: {
-                    img: pushupUrl,
-                    desc: ''     
-                },
-                pull_ups: {
-                    img: pullupUrl,
-                    desc: ''     
-                },
-                tricep_dips: {
-                    img: tricepdipUrl,
-                    desc: ''
-                },
-                dumbbell_kickback: {
-                    img: tricepkickbackUrl,
-                    desc: ''     
-                },
-                reverse_curl: {
-                    img: reversecurlURl,
-                    desc: ''     
-                },
-                tricep_extension: {
-                    img: tricepextenstionUrl,
-                    desc: ''     
-                },
-                one_arm_cable_press: {
-                    img: onearmUrl,
-                    desc: ''     
-                },
-                dumbbell_punch: {
-                    img: punchUrl,
-                    desc: ''     
-                }
-                
-            }
+            workouts: {}
         }
+    }
+
+    componentDidMount() {
+        this.getCategory()
+    }
+
+    getCategory() {
+        let cataData = firebase.database().ref('Exercises/Arms');
+        cataData.on('value', (snapshot) => {
+            let data = snapshot.val()
+            this.setState({
+                workouts: {
+                    ...data
+                }
+            })
+        })
     }
 
     getExInfo = (name) => {
