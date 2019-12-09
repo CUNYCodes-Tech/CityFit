@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import WorkTemp from './workout_template';
 import { Modal } from '@material-ui/core';
-import '../../../App.css';
+import Loader from '../../../loader';
 import firebase from '../../../base';
+import '../../../App.css';
 import '../catalog.css'
 
 export default class Abs extends Component {
@@ -50,26 +51,31 @@ export default class Abs extends Component {
     }
 
     render() {
-        let exercisedata = this.state.exerciseData
-        return (
-            <>
-                <div className='centerFlex'>
-                    <WorkTemp prevProp={this.props.prevProp} workouts={this.state.workouts} workoutGroup='Ab Exercises' getExInfo={this.getExInfo} />
+        let exercisedata = this.state.exerciseData;
 
-                    <Modal 
-                        open={this.state.open}
-                        onClose={() => this.handleModal()}
-                        aria-labelledby="simple-modal-title"
-                        aria-describedby="simple-modal-description"
-                        className='modalContainer'
-                    >
-                        <div className='modalContent'>
-                            <iframe title="Exercise Details" width="560" height="315" src={exercisedata.video} frameBorder="0" allowFullScreen></iframe>
-                            <p>{exercisedata.description}</p>
-                        </div>
-                    </Modal>
-                </div>
-            </> 
-        )
+        if(Object.keys(this.state.workouts).length !== 0) {
+            return (
+                <>
+                    <div className='centerFlex'>
+                        <WorkTemp prevProp={this.props.prevProp} workouts={this.state.workouts} workoutGroup='Ab Exercises' getExInfo={this.getExInfo} />
+
+                        <Modal 
+                            open={this.state.open}
+                            onClose={() => this.handleModal()}
+                            aria-labelledby="simple-modal-title"
+                            aria-describedby="simple-modal-description"
+                            className='modalContainer'
+                        >
+                            <div className='modalContent'>
+                                <iframe title="Exercise Details" width="560" height="315" src={exercisedata.video} frameBorder="0" allowFullScreen></iframe>
+                                <p>{exercisedata.description}</p>
+                            </div>
+                        </Modal>
+                    </div>
+                </> 
+            )
+        } else {
+            return <Loader />
+        }
     }
 }
