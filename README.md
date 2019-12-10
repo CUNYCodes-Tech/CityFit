@@ -4,7 +4,7 @@
 <ul>
   <li>William Giddins</li>
   <li>Andy Wang</li>
-  <li>Samuel</li>
+  <li>Samuel Youssef</li>
 </ul>
 
 <h3>What is CityFit?</h3>
