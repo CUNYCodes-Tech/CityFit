@@ -27,7 +27,7 @@ export default class Routes extends Component {
                 <Route exact path='/gym_location' component={Gyms} />
                 {/* <Route exact path='/forum' component={Forum}/>  */}
                 <Route exact path='/forum' component={Forum}/> 
-                <Route exact path='/forum/:postid' component={PostThread}/> 
+                <PrivateRoute exact path='/forum/:postid' component={PostThread}/> 
             </Router>
         )
     }
