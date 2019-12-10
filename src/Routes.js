@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import UserForm from './components/Registration/UserForm';
-import Profile from './components/Profile/Profile';
+import Profile from './components/Profile/Profile2';
 import LandingPage from './components/LandingPage/LandingPage';
 import Login from './Login';
 import SignUp from './SignUp';
@@ -24,7 +24,7 @@ export default class Routes extends Component {
                 <Route exact path='/signup' component={SignUp} />
                 <Route exact path='/catalog' component={Catalog} />
                 <Route path='/catalog/:category' component={Workouts} />
-                <Route exact path='/gym_location' component={Gyms} />
+                {/* <Route exact path='/gym_location' component={Gyms} /> */}
                 {/* <Route exact path='/forum' component={Forum}/>  */}
                 <Route exact path='/forum' component={Forum}/> 
                 <PrivateRoute exact path='/forum/:postid' component={PostThread}/> 

@@ -5,8 +5,6 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import './catalog.css';
 
-
-
 class CatalogHome extends Component {
   constructor(props) {
     super(props);

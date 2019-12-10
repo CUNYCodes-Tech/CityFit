@@ -1,4 +1,8 @@
-
+.MuiExpansionPanelDetails-root {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
 .mainText {
     margin-top: 15px;
     font-weight: 500;
