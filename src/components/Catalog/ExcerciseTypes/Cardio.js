@@ -53,6 +53,7 @@ export default class Cardio extends Component {
 
     render() {
         let exercisedata = this.state.exerciseData
+
         return (
             <>
                 <div className='centerFlex'>

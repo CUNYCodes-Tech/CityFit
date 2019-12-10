@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import WorkTemp from './workout_template';
 import { Modal } from '@material-ui/core';
 import firebase from '../../../base';
+import Loader from '../../../loader';
 import '../catalog.css';
 
 export default class Back extends Component {
@@ -51,23 +52,28 @@ export default class Back extends Component {
 
     render() {
         let exercisedata = this.state.exerciseData
-        return (
-            <>
-                <WorkTemp prevProp={this.props.prevProp} workouts={this.state.workouts} workoutGroup='Back Exercise' getExInfo={this.getExInfo} />
 
-                <Modal 
-                    open={this.state.open}
-                    onClose={() => this.handleModal()}
-                    aria-labelledby="simple-modal-title"
-                    aria-describedby="simple-modal-description"
-                    className='modalContainer'
-                >
-                    <div className='modalContent'>
-                        <iframe title="Exercise Details" width="560" height="315" src={exercisedata.video} frameBorder="0" allowFullScreen></iframe>
-                        <p>{exercisedata.description}</p>
-                    </div>
-                </Modal>
-            </>
-        )
+        if(Object.keys(this.state.workouts).length !== 0) {
+            return (
+                <>
+                    <WorkTemp prevProp={this.props.prevProp} workouts={this.state.workouts} workoutGroup='Back Exercise' getExInfo={this.getExInfo} />
+
+                    <Modal 
+                        open={this.state.open}
+                        onClose={() => this.handleModal()}
+                        aria-labelledby="simple-modal-title"
+                        aria-describedby="simple-modal-description"
+                        className='modalContainer'
+                    >
+                        <div className='modalContent'>
+                            <iframe title="Exercise Details" width="560" height="315" src={exercisedata.video} frameBorder="0" allowFullScreen></iframe>
+                            <p>{exercisedata.description}</p>
+                        </div>
+                    </Modal>
+                </>
+            )
+        } else {
+            return <Loader />
+        }
     }
 }

@@ -33,6 +33,13 @@
   box-shadow: 0px 5px 8px rgb(61, 61, 61);
 }
 
+.flexCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 #loginModal {
   display: flex;
   flex-direction: column;
@@ -81,17 +88,33 @@
   margin: 0 auto;
   animation: spin 2s linear infinite;
   z-index: 300;
- }
+}
 
- @keyframes spin {
-   0% {
-     transform: rotate(0deg);
-   }
+ #postLabel {
+  display: block;
+  margin-bottom: 10px;
+}
 
-   100% {
-     transform: rotate(360deg);
-   }
- }
+textarea {
+  padding: 10px;
+  line-height: 1.5;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 1px #999;
+  width: 40%;
+  min-width: 20rem;
+  height: 3rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 @media screen and (max-width: 450px) {
   #loginImage {

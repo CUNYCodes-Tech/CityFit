@@ -108,7 +108,7 @@ export default class FormPersonalDetails extends Component {
                     className={classes.select}
                 >
                     <MenuItem value ={'Skinny'}>Skinny</MenuItem>
-                    <MenuItem value ={'Fat'}>Fat</MenuItem>
+                    <MenuItem value ={'Fat'}>OverWeight</MenuItem>
                     <MenuItem value ={'Muscular'}>Muscular</MenuItem>
                 </Select>   
    

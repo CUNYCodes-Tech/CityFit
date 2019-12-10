@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.4.3",
     "@material-ui/lab": "^4.0.0-alpha.32",
+    "animejs": "^3.1.0",
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
     "dotenv": "^8.1.0",
@@ -40,7 +41,7 @@
       "last 1 safari version"
     ]
   },
-  "description": "<<<<<<< HEAD\r This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "description": "Explore the Fitness World Together!",
   "main": "index.js",
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.11.2",
