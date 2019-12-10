@@ -13,7 +13,7 @@ class FormUserDetails extends Component {
         const { user, handleChange, classes } = this.props;
 
         return (
-            <>
+            <div className='signUp'>
                 <Typography 
                     className={classes.typography} 
                     variant='h4'
@@ -44,7 +44,7 @@ class FormUserDetails extends Component {
                 >
                     Continue
                 </Button>
-            </>
+            </div>
         );
     }
     

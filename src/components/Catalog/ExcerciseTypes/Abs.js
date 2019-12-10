@@ -6,7 +6,7 @@ import firebase from '../../../base';
 import '../../../App.css';
 import '../catalog.css'
 
-export default class Arms extends Component {
+export default class Abs extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -22,7 +22,7 @@ export default class Arms extends Component {
     }
 
     getCategory() {
-        let cataData = firebase.database().ref('Exercises/Arms');
+        let cataData = firebase.database().ref('Exercises/Abs');
         cataData.on('value', (snapshot) => {
             let data = snapshot.val()
             this.setState({
@@ -34,8 +34,7 @@ export default class Arms extends Component {
     }
 
     getExInfo = (name) => {
-        //console.log(name)
-        const ExData = firebase.database().ref('Exercises/Arms/' + name );
+        const ExData = firebase.database().ref('Exercises/Abs/' + name );
         ExData.on('value', (snapshot) => {
             let data = snapshot.val()
             this.setState({
@@ -52,13 +51,13 @@ export default class Arms extends Component {
     }
 
     render() {
-        let exercisedata = this.state.exerciseData
+        let exercisedata = this.state.exerciseData;
 
         if(Object.keys(this.state.workouts).length !== 0) {
             return (
                 <>
                     <div className='centerFlex'>
-                        <WorkTemp prevProp={this.props.prevProp} workouts={this.state.workouts} workoutGroup='Arms Exercise' getExInfo={this.getExInfo} />
+                        <WorkTemp prevProp={this.props.prevProp} workouts={this.state.workouts} workoutGroup='Ab Exercises' getExInfo={this.getExInfo} />
 
                         <Modal 
                             open={this.state.open}
@@ -80,4 +79,3 @@ export default class Arms extends Component {
         }
     }
 }
-

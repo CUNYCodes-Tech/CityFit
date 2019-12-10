@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { AuthProvider } from './Auth';
 import Routes from './Routes';
-// import Nav from './CustomNav';
-import Login from './Login';
 import firebase from './base';
-import { Modal } from '@material-ui/core';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,20 +11,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-       open: false,
        loggedIn: false
     }
   }
 
   componentDidMount() {
     this.handleLoggingIn()
-  }
-
-  handleOpenModal = () => {
-    this.setState({
-        ...this.state,
-        open: !this.state.open
-    })
   }
 
   handleLoggingIn = () => {
@@ -51,7 +40,6 @@ class App extends Component {
   }
 
   render() {
-    // No longer using CustomNav.js, moved the nav to app
     return (
       <div className='App'>
         <AuthProvider>
@@ -73,7 +61,7 @@ class App extends Component {
                     : 
                     (
                       <>
-                        <Nav.Link href='#' onClick={this.handleOpenModal}>Login</Nav.Link>
+                        <Nav.Link href='/login'>Login</Nav.Link>
                         <Nav.Link href='/signup'>Sign Up</Nav.Link>
                       </>
                     )
@@ -81,19 +69,6 @@ class App extends Component {
                 </Nav>
             </Navbar.Collapse>  
           </Navbar>
-
-          <Modal 
-            open={this.state.open}
-            onClose={this.handleOpenModal}
-            onSubmit={this.handleLoggingIn}
-            aria-labelledby='login-modal'
-            aria-describedby='login-modal'
-            id='loginModal'
-          >
-            <div>
-              <Login handleModal={this.handleOpenModal} />
-            </div>
-          </Modal>
 
           <Routes />
         </AuthProvider>

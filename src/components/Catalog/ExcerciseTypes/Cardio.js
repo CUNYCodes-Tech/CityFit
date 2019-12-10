@@ -1,12 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import WorkTemp from './workout_template';
 import { Modal } from '@material-ui/core';
+import '../../../App.css';
 import firebase from '../../../base';
-import Loader from '../../../loader';
-import '../catalog.css';
+import '../catalog.css'
 
-
-export default class Shoulders extends Component {
+export default class Cardio extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -22,7 +21,7 @@ export default class Shoulders extends Component {
     }
 
     getCategory() {
-        let cataData = firebase.database().ref('Exercises/Shoudlers');
+        let cataData = firebase.database().ref('Exercises/Cardio');
         cataData.on('value', (snapshot) => {
             let data = snapshot.val()
             this.setState({
@@ -32,11 +31,13 @@ export default class Shoulders extends Component {
             })
         })
     }
-    
+
     getExInfo = (name) => {
-        const ExData = firebase.database().ref('Exercises/Shoudlers/' + name );
+        //console.log(name)
+        const ExData = firebase.database().ref('Exercises/Cardio/' + name );
         ExData.on('value', (snapshot) => {
             let data = snapshot.val()
+            console.log(data)
             this.setState({
                 exerciseData: {...data}
             }, this.handleModal())
@@ -52,11 +53,11 @@ export default class Shoulders extends Component {
 
     render() {
         let exercisedata = this.state.exerciseData
-        
-        if(Object.keys(this.state.workouts).length !== 0) {
-            return (
-                <>
-                    <WorkTemp prevProp={this.props.prevProp} workouts={this.state.workouts} workoutGroup='Shoulder Exercise' getExInfo={this.getExInfo} />  
+
+        return (
+            <>
+                <div className='centerFlex'>
+                    <WorkTemp prevProp={this.props.prevProp} workouts={this.state.workouts} workoutGroup='Cardio Exercises' getExInfo={this.getExInfo} />
 
                     <Modal 
                         open={this.state.open}
@@ -70,10 +71,8 @@ export default class Shoulders extends Component {
                             <p>{exercisedata.description}</p>
                         </div>
                     </Modal>
-                </>
-            )
-        } else {
-            return <Loader />
-        }
+                </div>
+            </> 
+        )
     }
 }

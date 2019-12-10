@@ -21,7 +21,7 @@ export default class FormPersonalDetails extends Component {
         const borough = ['Brooklyn', 'Manhattan', 'Queens', 'Staten Island', 'Bronx'];
 
         return (
-            <React.Fragment>
+            <div className='signUp'>
                 <Typography 
                     className={classes.typography} 
                     variant='h4'
@@ -70,7 +70,7 @@ export default class FormPersonalDetails extends Component {
                     <MenuItem value ={'5.7'}> 5'7 </MenuItem>
                     <MenuItem value ={'5.8'}> 5'8 </MenuItem>
                     <MenuItem value ={'5.9'}> 5'9 </MenuItem>
-                    <MenuItem value ={'5.10'}> 5.10 </MenuItem>
+                    <MenuItem value ={'5.10'}> 5'10 </MenuItem>
                     <MenuItem value ={'5.11'}> 5'11 </MenuItem>
                     <MenuItem value ={'6.0'}> 6'0 </MenuItem>
                     <MenuItem value ={'6.1'}> 6'1 </MenuItem>
@@ -108,7 +108,7 @@ export default class FormPersonalDetails extends Component {
                     className={classes.select}
                 >
                     <MenuItem value ={'Skinny'}>Skinny</MenuItem>
-                    <MenuItem value ={'Fat'}>Fat</MenuItem>
+                    <MenuItem value ={'Fat'}>OverWeight</MenuItem>
                     <MenuItem value ={'Muscular'}>Muscular</MenuItem>
                 </Select>   
    
@@ -139,7 +139,7 @@ export default class FormPersonalDetails extends Component {
                 >
                     Continue
                 </Button>
-            </React.Fragment>
+            </div>
         );
     }
 }

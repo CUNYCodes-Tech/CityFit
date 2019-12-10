@@ -1,8 +1,9 @@
 #searchContainer {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     margin-top: 1rem;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
 }
 
 #gymsContainer {
@@ -11,11 +12,14 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin-top: 2rem;
-    margin-bottom: 4rem;
+    margin-top: 1rem;
+    height: 90vh;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 .gymCard {
+    background: rgb(245, 245, 245);
     margin-top: 1.5rem;
     margin-left: 0.7rem;
     margin-right: 0.7rem;
@@ -23,9 +27,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    border: 1px solid rgb(251, 251, 251);
     border-radius: 0.7rem;
-    box-shadow: 3px 3.7px 10px lightgrey;
+    box-shadow: 3px 3.7px 10px rgb(61, 61, 61);
 }
 
 .gymCard img {
@@ -64,4 +67,16 @@
 .rating {
     display: flex;
     align-items: center;
+}
+
+@media screen and (max-width: 450px) {
+    .gymCard{
+        margin-top: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 0.7rem;
+        box-shadow: 3px 3.7px 10px rgb(61, 61, 61);
+        width: auto;
+    }
 }
