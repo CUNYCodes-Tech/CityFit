@@ -37,23 +37,23 @@
   padding: 2rem;
 }
 
-  .button:hover {
-    background-color: #555555;
-    color: white;
-  }
+.button:hover {
+  background-color: #555555;
+  color: white;
+}
 
-  h1{
-      color: black;
-      text-align: center;
-  }
+h1{
+    color: black;
+    text-align: center;
+}
 
-  div{
-      text-align: center;
-  }
+div{
+    text-align: center;
+}
 
-  img{
-      padding: 5px;
-      width: 100px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+img{
+    padding: 5px;
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
