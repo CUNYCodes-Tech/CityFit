@@ -1,5 +1,5 @@
 <h1>CityFit</h1>
-<h3>Checkout our app here: <a href='https://cityfit-db2fb.firebaseapp.com/'>https://cityfit-db2fb.firebaseapp.com/</a></h3>
+<h3>Checkout our app here: <a href='https://cityfit-db2fb.firebaseapp.com/' target="_blank">https://cityfit-db2fb.firebaseapp.com/</a></h3>
 <h3>Created By:</h3>
 <ul>
   <li>William Giddins</li>
