@@ -47,7 +47,7 @@ export default class Gyms extends Component {
     render() {
         return (
             <>
-                <h1 style={{marginTop: '3%'}}>Find a Gym Near You</h1>
+                <h3 style={{marginTop: '3%', marginBottom: '0'}}>Find a Gym Near You</h3>
 
                 <div className='flex' style={{flexDirection: 'column'}}>
                     <div id='searchContainer'>
